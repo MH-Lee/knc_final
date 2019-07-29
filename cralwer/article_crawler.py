@@ -43,7 +43,7 @@ def article_crawler(media_type='tech', date='today'):
     print("다음과 같은 중복데이터 제거: {}".format(int(original_row) - int(url_df.shape[0])))
     print(url_df.shape)
     if media_type == 'tech' or media_type == 'google':
-        total_news_df = pd.DataFrame(columns=["Magazine", "Date", "Title", "Text", "Url", "Keyword"])
+        total_news_df = pd.DataFrame(columns=["Magazine", "Date", "Title", "Text", "Url"])
         for i in range(url_df.shape[0]):
             url = url_df.iloc[i]['Url']
             date = url_df.iloc[i]['Date'][0:10]
@@ -72,15 +72,14 @@ def article_crawler(media_type='tech', date='today'):
                 title = a.title
                 text = a.text
                 a.nlp()
-                keyword = a.keywords
+                # keyword = a.keywords
             except:
                 print("{} pass".format(i))
             total_news_df = total_news_df.append({"Magazine"    : magazine,
                                                     "Date"      : date,
                                                     "Title"     : title,
                                                     "Text"      : text,
-                                                    "Url"       : url,
-                                                    "Keyword"   : keyword}, ignore_index=True)
+                                                    "Url"       : url}, ignore_index=True)
         formal_row = total_news_df.shape[0]
         total_news_df.drop_duplicates(['Title'], inplace=True)
         total_news_df.drop_duplicates(['Text'], inplace=True)
@@ -123,21 +122,19 @@ def article_crawler(media_type='tech', date='today'):
                     title = a.title
                     text = a.text
                     a.nlp()
-                    keyword = a.keywords
+                    # keyword = a.keywords
                 except:
                     print("{} pass".format(i))
                 total_news_df = total_news_df.append({"Magazine"  : magazine,
                                                       "Date"      : date,
                                                       "Title"     : title,
                                                       "Text"      : text,
-                                                      "Url"       : url,
-                                                      "Keyword"   : keyword}, ignore_index=True)
+                                                      "Url"       : url}, ignore_index=True)
                 company_df = company_df.append({"Magazine"  : magazine,
                                                 "Date"      : date,
                                                 "Title"     : title,
                                                 "Text"      : text,
-                                                "Url"       : url,
-                                                "Keyword"   : keyword}, ignore_index=True)
+                                                "Url"       : url}, ignore_index=True)
                 company_df.drop_duplicates(['Title'], inplace=True)
                 company_df.drop_duplicates(['Text'], inplace=True)
             company_df.to_excel(excel_writer,sheet_name=cor, index=False)

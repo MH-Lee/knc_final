@@ -1,6 +1,7 @@
 import os
 import datetime
 from datetime import datetime
+from gensim.summarization import keywords
 import pandas as pd
 import argparse
 
@@ -74,4 +75,5 @@ if __name__ == '__main__':
     except KeyError:
         print("drop list zero!")
         pass
+    df['Keywords'] = df['Text'].apply(lambda x:keywords(x))
     df.to_excel('./classifier/data/{}/all_article_{}.xlsx'.format(date,date2), index=False)
