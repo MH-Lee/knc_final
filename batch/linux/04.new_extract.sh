@@ -1,4 +1,4 @@
 echo crawler start
 
 echo extract important news
-python ./classifier/news_classifier.py --method auto --train True
+python3 ./classifier/news_classifier.py --method auto --train True
