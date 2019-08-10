@@ -59,6 +59,9 @@ def article_crawler(media_type='tech', date='today'):
             if 'videos/' in url:
                 print(url)
                 continue
+            if 'video/' in url:
+                print(url)
+                continue
             if 'shopping/' in url:
                 print(url)
                 continue

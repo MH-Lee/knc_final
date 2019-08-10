@@ -3,6 +3,7 @@ import datetime
 from datetime import datetime
 from gensim.summarization import keywords
 import pandas as pd
+import numpy as np
 import argparse
 
 def parse_args():
@@ -69,11 +70,15 @@ if __name__ == '__main__':
     for file in file_list:
         tmp = pd.read_excel(file)
         df = df.append(tmp)
+        df.dropna(inplace=True)
     try:
         drop_idx = df[df['Url'].str.find('/shopping/') != -1].index
         df.drop(drop_idx, axis=0, inplace=True)
     except KeyError:
         print("drop list zero!")
         pass
-    df['Keywords'] = df['Text'].apply(lambda x:keywords(x))
+    # print('데이터 차원 : {}'.format(df.shape))
+    # df = df[np.isfinite(df['Text'])]
+    # print('데이터 차원 : {}'.format(df.shape))
+    df['Keywords'] = df['Text'].apply(lambda x:keywords(str(x)).split('\n'))
     df.to_excel('./classifier/data/{}/all_article_{}.xlsx'.format(date,date2), index=False)

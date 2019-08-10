@@ -7,3 +7,5 @@ venv.bat
 *.ipynb
 classifier/models/
 classifier/results/
+source/
+article/
