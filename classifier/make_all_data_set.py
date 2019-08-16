@@ -65,7 +65,7 @@ if __name__ == '__main__':
     elif args.method == 'manual':
         file_list = make_file_list(method='manual')
     print(file_list)
-    columns = ['Magazine', 'Date', 'Title', 'Text', 'Url', 'Keyword']
+    columns = ['Magazine', 'Date', 'Title', 'Text', 'Url']
     df = pd.DataFrame(columns=columns)
     for file in file_list:
         tmp = pd.read_excel(file)
@@ -77,7 +77,7 @@ if __name__ == '__main__':
     except KeyError:
         print("drop list zero!")
         pass
-    # print('데이터 차원 : {}'.format(df.shape))
+    print('데이터 차원 : {}'.format(df.shape))
     # df = df[np.isfinite(df['Text'])]
     # print('데이터 차원 : {}'.format(df.shape))
     df['Keywords'] = df['Text'].apply(lambda x:keywords(str(x)).split('\n'))

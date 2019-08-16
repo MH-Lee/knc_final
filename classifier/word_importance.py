@@ -48,52 +48,17 @@ class MakeScoreData:
         stop_words.extend(stop_words_add)
         filtered_sentence = [w for w in word_token if not w.lower() in stop_words]
         filtered_sentence = [w for w in filtered_sentence if not w.lower() in cor_list]
-        filtered_sentence = [word for word in filtered_sentence if len(word) > 3]
+        filtered_sentence = [word for word in filtered_sentence if len(word) > 1]
         filtered_sentence = [word for word in filtered_sentence if not word.isnumeric()]
         filtered_sentence = [word for word, pos in pos_tag(filtered_sentence) if pos in pos_list]
         return filtered_sentence
 
-    def filter_list(self, word_token):
-        pos_list = ['JJ','JJR','JJS','NN', 'NNP', 'VB', 'VBG', 'VBP', 'VBN', 'VBZ',\
-                    'RB','RBR','RBS']
-        stop_words = list(set(stopwords.words('english')))
-        stop_words_add = [',','.','’','reuters', 'photo', 'file', 'inc.', 'corp.',\
-                        'techcrunch', 'york', 'amazon','monday', 'tuesday', 'tursday'\
-                        'wednesday', 'friday', 'saturday', 'sunday','fedex']
-        cor_list = pd.read_csv('./Company.csv')['Name'].tolist()
-        cor_list = [cor.lower() for cor in cor_list]
-        stop_words.extend(stop_words_add)
-        filtered_token = [w for w in word_token if not w.lower() in stop_words]
-        filtered_token = [w for w in filtered_token if not w.lower() in cor_list]
-        filtered_token = [word for word in filtered_token if len(word) > 3]
-        filtered_token = [word for word in filtered_token if not word.isnumeric()]
-        filtered_token = [word for word, pos in pos_tag(filtered_token) if pos in pos_list]
-        return filtered_token
-
     def plural_to_singular(self, word_token):
         return list(set([p.singular_noun(word) if p.singular_noun(word) != False else word for word in word_token]))
-    ###############################################################################
-    ###############################################################################
-    ### 2. extract keywords
-    ###############################################################################
-    def word_extract(self):
-        im_article = pd.read_excel('./classifier/data/{}/all_article.xlsx'.format(self.today1))
-        im_article.dropna(inplace=True)
-        im_article['token'] = im_article['Text'].apply(lambda x:self.filter_wordtoken(x))
-        im_article['keywords'] = im_article['Text'].apply(lambda x:keywords(x, lemmatize = True).split('\n'))
-        im_article['keywords'] = im_article['keywords'].apply(lambda x:self.filter_list(x))
-        im_article['keywords2'] = im_article['keywords'].apply(lambda word_token:self.plural_to_singular(word_token))
-        keywords_list = im_article['keywords2'].sum()
-        freq= FreqDist(keywords_list)
-        word_freq = sorted(dict(freq).items(), key=operator.itemgetter(1), reverse=True)
-        word_filter = [word for word, value in word_freq if value > 3]
-        importance_word_df = pd.DataFrame(columns=['words'])
-        importance_word_df['words'] = word_filter
-        importance_word_df.to_csv('./classifier/data/{}/im_word_{}.csv'.format(self.today1, self.today2), index=False)
 
     ###############################################################################
     ###############################################################################
-    ### 3. make score
+    ### 2. make score
     ###############################################################################
     def article_scoring(self):
         article_train = pd.read_excel('./classifier/data/{}/all_article_{}.xlsx'.format(self.today1, self.today2))
