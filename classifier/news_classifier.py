@@ -11,19 +11,15 @@ import argparse
 import pandas as pd
 import numpy as np
 import re
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
 import gensim
-from gensim.summarization import keywords
 from gensim.models import Word2Vec
 from gensim import models
 from datetime import datetime, timedelta
 import time
 import multiprocessing
-# nltk.download('wordnet')
+from packages.PreProcess import PreProcessing
 cores = multiprocessing.cpu_count()
+pp = PreProcessing()
 ####################################################################################################
 ### make preprocess function
 ####################################################################################################
@@ -51,37 +47,6 @@ class News_classifier:
         else:
             self.model_name = model
         print("Today : {}, word2vec:{} ,train: {}".format(self.today1, self.model_name, self.train),"News_classifier Start!")
-
-    def preprocess(self, corpus):
-        stop_words = set(stopwords.words('english'))
-        n = WordNetLemmatizer()
-        corpus_preprocess= []
-        for i in range(0,len(corpus)):
-            #print(i)
-            # Special Characters
-            text = re.sub(r"\'s", " 's ", str(corpus[i]))
-            text = re.sub(r"\'ve", " 've ", text)
-            text = re.sub(r"n\'t", " 't ", text )
-            text = re.sub(r"\'re", " 're ",text)
-            text = re.sub(r"\'d", " 'd ", text )
-            text = re.sub(r"\'ll", " 'll ", text)
-            text = re.sub(r",", " ", text)
-            text = re.sub(r"\.", " ", text)
-            text = re.sub(r"!", " ", text)
-            text = re.sub(r"\(", " ( ", text)
-            text = re.sub(r"\)", " ) ", text)
-            text= re.sub(r"\?", " ", text)
-            text = re.sub(r"\s{2,}", " ", text) # change 2 white spaces as 1 white space
-            text = re.sub("[^a-zA-Z]"," ", text) # change "match all strings that contain a non-letter" as 1 white spaced
-            word_tokens = word_tokenize(text.lower())
-            result = []
-            for w in word_tokens:
-                if w not in stop_words:
-                    result.append(w)
-            result = [n.lemmatize(w) for w in result]
-            # dd = " ".join(result)
-            corpus_preprocess.append(result)
-        return(corpus_preprocess)
 
     def corpus_vector(self, corpus, model):
         corpus_vector = []
@@ -138,7 +103,7 @@ class News_classifier:
         if self.train == True:
             print("setting train")
             start_time1 = time.time()
-            newwiki  = self.preprocess(data.Contents)
+            newwiki  =  pp.total_preprocess(data.Contents)
             end_time1 = time.time()
             print(end_time1 - start_time1)
             print("start train!")
@@ -158,12 +123,14 @@ class News_classifier:
             del model
         if os.path.exists('./classifier/results/') == False:
             os.mkdir('./classifier/results/')
-        if os.path.exists('./classifier/results/{}'.format(date[-1])) == False:
-            os.mkdir('./classifier/results/{}'.format(date[-1]))
-        data = data[data.important_score >=2]
+        if os.path.exists('./classifier/results/article/') == False:
+            os.mkdir('./classifier/results/article/')
+        if os.path.exists('./classifier/results/article/{}'.format(date[-1])) == False:
+            os.mkdir('./classifier/results/article/{}'.format(date[-1]))
+        data = data[data.Total_score >= 3.5]
         for day in date:
             data_day = data[data.Date == day]
-            data_day.sort_values('important_score', ascending=False , inplace=True)
+            data_day.sort_values('Total_score', ascending=False , inplace=True)
             data_day.reset_index(inplace=True, drop=True)
             print(data_day.shape)
             init_row = data_day.shape[0]

@@ -23,7 +23,7 @@ class MakeScoreData:
         self.headline_score = pd.read_csv('./classifier/data/word_score/headline_score.csv', engine='python', index_col=0)
         self.total_topic_score = pd.read_csv('./classifier/data/word_score/total_keywords_score.csv', engine='python', index_col=0)
 
-        self.article_df['Total_text'] = self.article_df['Title'] + '\n' + self.article_df['Text']
+        self.article_df['Contents'] = self.article_df['Title'] + '\n' + self.article_df['Text']
         self.article_df.dropna(inplace=True)
         end_init_ = time.time()
         print("PreProcess is done. time:{}, data dim: {}".format((end_init_ - start_init_), self.article_df.shape))
@@ -31,7 +31,7 @@ class MakeScoreData:
     def extract_words(self):
         start_extract_ = time.time()
         self.article_df['Title_keyword'] = pp.total_preprocess(self.article_df['Title'])
-        self.article_df['Full_keyword'] = pp.total_preprocess(self.article_df['Total_text'])
+        self.article_df['Full_keyword'] = pp.total_preprocess(self.article_df['Contents'])
         self.article_df['Title_keyword_Freq'] = self.article_df['Title_keyword'].apply(lambda x:dict(FreqDist(x)))
         self.article_df['Full_keyword_Freq'] = self.article_df['Full_keyword'].apply(lambda x:dict(FreqDist(x)))
         self.article_df['Title_keyword_unique'] = self.article_df['Title_keyword_Freq'].apply(lambda x:list(x.keys()))
@@ -91,7 +91,7 @@ class MakeScoreData:
         article_df.sort_values('Total_score', ascending=False, inplace=True)
         article_df.drop_duplicates(['Url'], inplace=True)
         article_df.drop_duplicates(['Title'], inplace=True)
-        article_df.to_excel("./classifier/data/{}/article_score_{}.xlsx".format(self.today1, self.today2), index=False)
+        article_df.to_excel("./classifier/data/{}/article_score.xlsx".format(self.today1), index=False)
 
 if __name__ == '__main__':
     date = input("날짜를 선택하세요 (Today or Date(YYYY-mm-dd))")
