@@ -6,11 +6,12 @@ from gensim import corpora, models
 import sklearn
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.model_selection import GridSearchCV
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 import pyLDAvis
 import pyLDAvis.gensim as gensimvis
 import pyLDAvis.sklearn as sklvis
-from sklearn.feature_extraction.text import CountVectorizer
 import time, os
 
 pp = PreProcessing()
@@ -75,7 +76,7 @@ class MakeKewordDict:
             for i in range(0, len(corpus_tf)):
                 title_keyword = title_keyword.append({'Word':corpus_tf[i][0],\
                                                     'Frequency':corpus_tf[i][1],\
-                                                    'Category':"국제"}, ignore_index=True)
+                                                    'Category':cat}, ignore_index=True)
         title_keyword.to_csv("./classifier/results/Dictionary/keyword_headline.csv", index=False, encoding="cp949")
 
     def make_liklihood_plot(self, result_df, cat, n_topics):
@@ -97,7 +98,7 @@ class MakeKewordDict:
         plt.xlabel("Num Topics")
         plt.ylabel("Log Likelyhood Scores")
         plt.legend(title='Alpha', loc='best')
-        plt.savefig('./classifier/results/likelihood/{}_best.jpg'.format(cat_data_file))
+        plt.savefig('./classifier/results/Dictionary/likelihood/{}_best.jpg'.format(cat))
         plt.ioff()
         plt.close()
 
@@ -154,13 +155,13 @@ class MakeKewordDict:
             cat_data_file = cat.replace("/", "_")
 
             data_df = pp.display_topics(best_lda_model, feature_names, 15, cat)
-            data_df.to_csv('./Topic_csv/{}_topics.csv'.format(cat_data_file), index=False, encoding='cp949')
+            data_df.to_csv('./classifier/results/Dictionary/Topic_csv/{}_topics.csv'.format(cat_data_file), index=False, encoding='cp949')
             total_df = total_df.append(data_df)
             panel = sklvis.prepare(best_lda_model, data_vectorized, vectorizer, mds='tsne')
             pyLDAvis.save_html(panel, './classifier/results/LDA_html/lda_{}.html'.format(cat_data_file))
 
             result_df = pd.DataFrame(model.cv_results_)
-            self.make_liklihood_plot(result_df, cat_data_file, n_topics)
+            self.make_liklihood_plot(result_df=result_df, cat=cat_data_file, n_topics=n_topics)
         end_1 = time.time()
         print(end_1 - start_1)
         total_df.to_csv('./classifier/results/Dictionary/total_topics.csv', index=False, encoding='cp949')
@@ -172,7 +173,7 @@ class MakeKewordDict:
 
         knc_word['Scores'] = 1
         knc_word = knc_word[['Words', 'Scores']]
-        knc_word.to_csv("../Score/knc_score.csv", encoding='cp949', index=False)
+        knc_word.to_csv("./classifier/results/Score/knc_score.csv", encoding='cp949', index=False)
         headline =headline[headline['Frequency'] > 1]
         headline['Frequency'] = headline.groupby('Category')['Frequency'].apply(lambda x: round(((x-min(x))/(max(x)-min(x)) + 1), 2))
         headline_score = headline.pivot(index='Word', columns='Category', values='Frequency').fillna(0).reset_index()
@@ -191,4 +192,4 @@ if __name__ == '__main__':
     md = MakeKewordDict()
     md.title_keword_extract()
     md.make_catagory_Dict()
-    ms.make_keyword_score()
+    md.make_keyword_score()

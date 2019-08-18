@@ -19,9 +19,9 @@ class MakeScoreData:
             self.today1 = datetime.strptime(date, "%Y-%m-%d").date().strftime("%Y-%m-%d")
             self.today2 = datetime.strptime(date, "%Y-%m-%d").date().strftime("%Y%m%d")
         self.article_df = pd.read_excel('./classifier/data/{}/all_article_{}.xlsx'.format(self.today1, self.today2))
-        self.knc_score = pd.read_csv('./classifier/data/word_score/knc_score.csv', engine='python', index_col=0)
-        self.headline_score = pd.read_csv('./classifier/data/word_score/headline_score.csv', engine='python', index_col=0)
-        self.total_topic_score = pd.read_csv('./classifier/data/word_score/total_keywords_score.csv', engine='python', index_col=0)
+        self.knc_score = pd.read_csv('./classifier/results/Score/knc_score.csv', engine='python', index_col=0)
+        self.headline_score = pd.read_csv('./classifier/results/Score/headline_score.csv', engine='python', index_col=0)
+        self.total_topic_score = pd.read_csv('./classifier/results/Score/total_keywords_score.csv', engine='python', index_col=0)
 
         self.article_df['Contents'] = self.article_df['Title'] + '\n' + self.article_df['Text']
         self.article_df.dropna(inplace=True)
