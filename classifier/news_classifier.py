@@ -1,7 +1,7 @@
 ####################################################################################################
 ### Project : kim & chang news alert service
 ### Content : K&C remove duplicate news
-### Author  : Leon Choi & Hoon Lee
+### Author  : Leon Choi & Minsu Kim & Hoon Lee
 ####################################################################################################
 ####################################################################################################
 ### make preprocess class
@@ -40,10 +40,10 @@ class News_classifier:
             self.today2 = datetime.today().strftime("%Y%m%d")
         else:
             self.today1 = datetime.strptime(date, "%Y-%m-%d").date().strftime("%Y-%m-%d")
-            self.today2 = datetime.strptime(date, "%Y-%m-%d").date().strftime("%Y-%m-%d")
+            self.today2 = datetime.strptime(date, "%Y-%m-%d").date().strftime("%Y%m%d")
         if model == 'Base':
             yesterday = datetime.today() - timedelta(days=1)
-            self.model_name = 'W2V_news_{}'.format(yesterday.strftime("%Y-%m-%d"))
+            self.model_name = 'W2V_news_{}'.format(yesterday.strftime("%Y%m%d"))
         else:
             self.model_name = model
         print("Today : {}, word2vec:{} ,train: {}".format(self.today1, self.model_name, self.train),"News_classifier Start!")
@@ -58,12 +58,12 @@ class News_classifier:
         return(corpus_vector)
 
     def title_vector(self, title, model):
-        pre_title = self.preprocess(title)
+        pre_title = pp.total_preprocess(title)
         title_vec = self.corpus_vector(pre_title, model)
         return (title_vec)
 
     def text_vector(self, text, model):
-        pre_text = self.preprocess(text)
+        pre_text = pp.total_preprocess(text)
         text_vec = self.corpus_vector(pre_text, model)
         return (text_vec)
 
@@ -112,7 +112,7 @@ class News_classifier:
             model.build_vocab(newwiki, update=True)
             total_examples = model.corpus_count
             model.train(newwiki, total_examples = total_examples, epochs = 10)
-            model.save('./classifier/models/W2V_news_{}'.format(self.today1))
+            model.save('./classifier/models/W2V_news_{}'.format(self.today2))
             end_time2 = time.time()
             print(end_time2 - start_time2)
             w2v_model = model.wv
@@ -128,6 +128,7 @@ class News_classifier:
         if os.path.exists('./classifier/results/article/{}'.format(date[-1])) == False:
             os.mkdir('./classifier/results/article/{}'.format(date[-1]))
         data = data[data.Total_score >= 3.5]
+        make_data_start = True
         for day in date:
             data_day = data[data.Date == day]
             data_day.sort_values('Total_score', ascending=False , inplace=True)
@@ -146,10 +147,15 @@ class News_classifier:
                     print(i)
                     print("pass")
                     continue
+            if make_data_start == True:
+                total_df = data_day
+                make_data_start = False
+            else:
+                total_df = total_df.append(data_day)
             last_row = data_day.shape[0]
             print("제거된 중복뉴스 수: {}".format(init_row - last_row))
             data_day.to_excel('./classifier/results/{}/{}.xlsx'.format(date[-1], day), index=False)
-
+        total_df.to_excel('./classifier/results/{}/total_df_{}.xlsx'.format(self.today2), index=False)
 
 if __name__ == "__main__":
     args = parse_args()
