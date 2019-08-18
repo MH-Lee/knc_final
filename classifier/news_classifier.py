@@ -17,6 +17,7 @@ from gensim import models
 from datetime import datetime, timedelta
 import time
 import multiprocessing
+import ast
 from packages.PreProcess import PreProcessing
 cores = multiprocessing.cpu_count()
 pp = PreProcessing()
@@ -58,20 +59,20 @@ class News_classifier:
         return(corpus_vector)
 
     def title_vector(self, title, model):
-        pre_title = pp.total_preprocess(title)
-        title_vec = self.corpus_vector(pre_title, model)
+        title = pp.total_preprocess(title)
+        title_vec = self.corpus_vector(title, model)
         return (title_vec)
 
     def text_vector(self, text, model):
-        pre_text = pp.total_preprocess(text)
-        text_vec = self.corpus_vector(pre_text, model)
+        text_vec = self.corpus_vector(text, model)
         return (text_vec)
 
     def title_corpus_vector(self, df, model, alpha = 0.3):
         title =  df.reset_index(drop = True)['Title']
-        text = df.reset_index(drop = True)['Text']
+        text = df.reset_index(drop = True)['Full_keyword'].tolist()
         title_vec = self.title_vector(title, model)
         text_vec = self.text_vector(text, model)
+        print(title_vec.shape, text_vec.shape)
         new_corpus = (title_vec * alpha) + (text_vec * (1 - alpha))
         return(new_corpus)
 
@@ -93,17 +94,26 @@ class News_classifier:
         dist_mat = np.asmatrix(dist_mat)
         return(dist_mat)
 
+    def merge_list_by_col(self, row):
+        # print(row['Title_keyword'])
+        total_list = list(row['Title_keyword']) + list(row['Full_keyword'])
+        return total_list
+
     def make_result(self):
         data = pd.read_excel("./classifier/data/{}/article_score.xlsx".format(self.today1))
         date = data.Date.astype('category').cat.categories.tolist()
-        print(len(date))
         data.dropna(inplace=True)
+        print("날짜: ", len(date), "데이터 차원: ", data.shape)
         data.reset_index(inplace=True, drop=True)
-        data['Contents'] = data['Title'] + "\n" + data["Text"]
+        data['Title_keyword'] = data['Title_keyword'].apply(lambda x: ast.literal_eval(x))
+        data['Title_keyword_len'] = data['Title_keyword'].apply(lambda x: len(x))
+        data['Full_keyword'] = data['Full_keyword'].apply(lambda x: ast.literal_eval(x))
+        data['Full_keyword'] = data.apply(self.merge_list_by_col, axis=1)
+        data = data[data['Title_keyword_len'] > 0]
         if self.train == True:
             print("setting train")
             start_time1 = time.time()
-            newwiki  =  pp.total_preprocess(data.Contents)
+            newwiki  =  data.Full_keyword.tolist()
             end_time1 = time.time()
             print(end_time1 - start_time1)
             print("start train!")
@@ -127,7 +137,7 @@ class News_classifier:
             os.mkdir('./classifier/results/article/')
         if os.path.exists('./classifier/results/article/{}'.format(date[-1])) == False:
             os.mkdir('./classifier/results/article/{}'.format(date[-1]))
-        data = data[data.Total_score >= 3.5]
+        data = data[data.Total_score > 3.5]
         make_data_start = True
         for day in date:
             data_day = data[data.Date == day]
@@ -137,6 +147,7 @@ class News_classifier:
             init_row = data_day.shape[0]
             news_cv = self.title_corpus_vector(data_day, model= w2v_model, alpha = 0.2)
             cosine_day = self.cosine_mat(news_cv)
+            print(cosine_day)
             # cosin similarity 0.8이상의 index
             # data.sort_values('Date', inplace=True)
             for i in data_day.index:
@@ -144,8 +155,8 @@ class News_classifier:
                     data_day.drop(np.where(cosine_day[i] > 0.75)[1][1:], axis=0, inplace=True)
                     # data03.reset_index(inplace=True, drop=True)
                 except KeyError:
-                    print(i)
-                    print("pass")
+                    print(i, "pass")
+                    # print()
                     continue
             if make_data_start == True:
                 total_df = data_day
@@ -154,8 +165,8 @@ class News_classifier:
                 total_df = total_df.append(data_day)
             last_row = data_day.shape[0]
             print("제거된 중복뉴스 수: {}".format(init_row - last_row))
-            data_day.to_excel('./classifier/results/{}/{}.xlsx'.format(date[-1], day), index=False)
-        total_df.to_excel('./classifier/results/{}/total_df_{}.xlsx'.format(self.today2), index=False)
+            data_day.to_excel('./classifier/results/article/{}/{}.xlsx'.format(date[-1], day), index=False)
+        total_df.to_excel('./classifier/results/article/{}/total_df.xlsx'.format(date[-1]), index=False)
 
 if __name__ == "__main__":
     args = parse_args()

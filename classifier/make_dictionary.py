@@ -22,6 +22,8 @@ class MakeKewordDict:
         self.data = pd.read_excel("./classifier/data/important_article/knc_importance.xlsx")
         if os.path.exists('./classifier/results/') == False:
             os.mkdir('./classifier/results/')
+        if os.path.exists('./classifier/results/Score') == False:
+            os.mkdir('./classifier/results/Score')
         if os.path.exists('./classifier/results/Dictionary') == False:
             os.mkdir('./classifier/results/Dictionary')
         if os.path.exists('./classifier/results/LDA_html') == False:
