@@ -80,5 +80,4 @@ if __name__ == '__main__':
     print('데이터 차원 : {}'.format(df.shape))
     # df = df[np.isfinite(df['Text'])]
     # print('데이터 차원 : {}'.format(df.shape))
-    df['Keywords'] = df['Text'].apply(lambda x:keywords(str(x)).split('\n'))
     df.to_excel('./classifier/data/{}/all_article_{}.xlsx'.format(date,date2), index=False)

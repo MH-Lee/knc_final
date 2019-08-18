@@ -23,7 +23,7 @@ class NewsURL:
         # Make the magazine list
         self.general_magazine1 = ["ABC News", "Associated Press", "Business Insider", "CBS News","CNN", "MSNBC"]
         self.general_magazine2 = ["Mashable", "NBC News", "The New York Times", "Reuters","The Economist"]
-        self.general_magazine3 = ["The Washington Post", "The Washington Times", "Time", "The Wall Street Journal", "USA Today"]
+        self.general_magazine3 = ["The Washington Post", "The Washington Times", "Time", "USA Today"]
         self.tech_magazine = ["Ars Technica", "Engadget", "Hacker News", "TechCrunch", "TechRader", "The Next Web", "The Verge", "Wired"]
         self.today = datetime.date.today()
         self.start_date = datetime.datetime.strptime(start_date, "%Y-%m-%d")
