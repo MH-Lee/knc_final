@@ -137,7 +137,7 @@ class News_classifier:
             os.mkdir('./classifier/results/article/')
         if os.path.exists('./classifier/results/article/{}'.format(date[-1])) == False:
             os.mkdir('./classifier/results/article/{}'.format(date[-1]))
-        data = data[data.Total_score > 3.5]
+        # data = data[data.Total_score > 3.5]
         make_data_start = True
         for day in date:
             data_day = data[data.Date == day]

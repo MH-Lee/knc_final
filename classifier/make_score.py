@@ -77,7 +77,7 @@ class MakeScoreData:
         return article_df
 
     def make_score(self, article_df):
-        article_df['common_knc'] = article_df['Full_keyword_unique'].apply(lambda x: list(set(x).intersection(self.knc_score.index.tolist())))
+        article_df['common_knc'] = article_df['Title_keyword_unique'].apply(lambda x: list(set(x).intersection(self.knc_score.index.tolist())))
         article_df['common_headline'] = article_df['Title_keyword_unique'].apply(lambda x: list(set(x).intersection(self.headline_score.index.tolist())))
         article_df['common_full_LDA'] = article_df['LDA_keywords'].apply(lambda x: list(set(x).intersection(self.total_topic_score.index.tolist())))
 
