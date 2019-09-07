@@ -24,8 +24,7 @@ from nltk.tag      import pos_tag
 # nltk.download("wordnet")
 
 class PreProcessing:
-    def __init__(self):
-
+    def __init__(self, mode='dictionary'):
         # Stopwords of English
         self.en_stopwords = stopwords.words("english")
         self.en_stopwords.remove("against")
@@ -34,7 +33,10 @@ class PreProcessing:
         my_stopwords = pd.read_csv("./classifier/packages/Data/Stopwords.csv", engine="python")["Stopwords"].tolist()
         company      = pd.read_csv("./classifier/packages/Data/Company.csv",   engine="python")["Company"].tolist()
         magazine     = pd.read_csv("./classifier/packages/Data/Magazine.csv",  engine="python")["Magazine"].tolist()
-        self.total_stopwords = my_stopwords + self.en_stopwords + company + magazine
+        if mode == 'dictionary':
+            self.total_stopwords = my_stopwords + self.en_stopwords + magazine + company
+        else:
+            self.total_stopwords = my_stopwords + self.en_stopwords + magazine
         # Lemmatizer
         self.lemmatizer = WordNetLemmatizer()
 

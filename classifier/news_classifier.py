@@ -20,7 +20,7 @@ import multiprocessing
 import ast
 from packages.PreProcess import PreProcessing
 cores = multiprocessing.cpu_count()
-pp = PreProcessing()
+pp = PreProcessing(mode='score')
 ####################################################################################################
 ### make preprocess function
 ####################################################################################################

@@ -13,9 +13,17 @@ import pyLDAvis
 import pyLDAvis.gensim as gensimvis
 import pyLDAvis.sklearn as sklvis
 import time, os
+import argparse
 
-pp = PreProcessing()
+pp = PreProcessing(mode='dictionary')
 np.random.seed(777)
+
+def parse_args():
+    # set make data parser
+    parser = argparse.ArgumentParser(description='news extract')
+    parser.add_argument('--method', help='select only title or lda', default='lda', type=str)
+    args = parser.parse_args()
+    return args
 
 class MakeKewordDict:
     def __init__(self):
@@ -52,33 +60,24 @@ class MakeKewordDict:
 
     def title_keword_extract(self):
         title_data = self.title_keyword_preprocess_()
-        title_data['Category1'] = title_data['Category1'].apply(lambda x: x.strip())
-        title_data['Category2'] = title_data['Category2'].apply(lambda x: str(x).strip())
-        category = title_data['Category1'].astype('category').cat.categories.tolist()
-        category = [cat.strip() for cat in category]
-        category = list(set(category))
+        title_keyword = pd.DataFrame(columns=["Word", "Frequency"])
+        tmp = title_data["Title2"].tolist()
+        corpus = []
+        for text in tmp:
+            tmp2 = " ".join(text)
+            corpus.append(tmp2)
 
-        title_keyword = pd.DataFrame(columns=["Word", "Frequency", "Category"])
+        corpus_tf = CountVectorizer().fit(corpus)
+        count = corpus_tf.transform(corpus).toarray().sum(axis=0)
+        idx = np.argsort(-count)
 
-        for cat in category:
-            tmp = title_data.loc[(title_data["Category1"]==cat ) | (title_data["Category2"]==cat), "Title2"].tolist()
-            corpus = []
-            for text in tmp:
-                tmp2 = " ".join(text)
-                corpus.append(tmp2)
+        count = count[idx]
+        feature_name = np.array(corpus_tf.get_feature_names())[idx]
+        corpus_tf = list(zip(feature_name, count))
 
-            corpus_tf = CountVectorizer().fit(corpus)
-            count = corpus_tf.transform(corpus).toarray().sum(axis=0)
-            idx = np.argsort(-count)
-
-            count = count[idx]
-            feature_name = np.array(corpus_tf.get_feature_names())[idx]
-            corpus_tf = list(zip(feature_name, count))
-
-            for i in range(0, len(corpus_tf)):
-                title_keyword = title_keyword.append({'Word':corpus_tf[i][0],\
-                                                    'Frequency':corpus_tf[i][1],\
-                                                    'Category':cat}, ignore_index=True)
+        for i in range(0, len(corpus_tf)):
+            title_keyword = title_keyword.append({'Word':corpus_tf[i][0],\
+                                                'Frequency':corpus_tf[i][1]}, ignore_index=True)
         title_keyword.to_csv("./classifier/results/Dictionary/keyword_headline.csv", index=False, encoding="cp949")
 
     def make_liklihood_plot(self, result_df, cat, n_topics):
@@ -168,30 +167,34 @@ class MakeKewordDict:
         print(end_1 - start_1)
         total_df.to_csv('./classifier/results/Dictionary/total_topics.csv', index=False, encoding='cp949')
 
-    def make_keyword_score(self):
-        knc_word = pd.read_excel("./classifier/data/knc_word.xlsx")
+    def make_keyword_score(self, method='title'):
         headline = pd.read_csv("./classifier/results/Dictionary/keyword_headline.csv", engine="python")
         total_keywords = pd.read_csv("./classifier/results/Dictionary/total_topics.csv", engine="python")
+        headline = headline[headline['Frequency'] > 1]
 
-        knc_word['Scores'] = 1
-        knc_word = knc_word[['Words', 'Scores']]
-        knc_word.to_csv("./classifier/results/Score/knc_score.csv", encoding='cp949', index=False)
-        headline =headline[headline['Frequency'] > 1]
-        headline['Frequency'] = headline.groupby('Category')['Frequency'].apply(lambda x: round(((x-min(x))/(max(x)-min(x)) + 1), 2))
-        headline_score = headline.pivot(index='Word', columns='Category', values='Frequency').fillna(0).reset_index()
-        headline_score.columns = ['Word', 'International', 'Regulation', 'Corporate', 'Law', 'Market', 'Tech']
-        headline_score.to_csv("./classifier/results/Score/headline_score.csv", encoding='cp949', index=False)
+        headline['Frequency'] = headline['Frequency'].apply(lambda x: round(((x-headline['Frequency'].min())/(headline['Frequency'].max()-headline['Frequency'].min()) + 1), 2))
+        headline.to_csv("./classifier/results/Score/headline_score.csv", index=False)
 
-        total_keywords = total_keywords.groupby(['Words', 'Category'], as_index=False).count()
-        total_keywords.sort_values(['Category','Topic'], ascending=[True, False], inplace=False)
-        total_keywords.rename(columns ={'Topic':'Score'}, inplace=True)
-        total_keywords['Score'] = total_keywords['Score'] / 2
-        total_keywords_score = total_keywords.pivot(index='Words', columns='Category', values='Score').reset_index().fillna(0)
-        total_keywords_score.columns = ['Word', 'International', 'Regulation', 'Corporate', 'Law', 'Market', 'Tech']
-        total_keywords_score.to_csv("./classifier/results/Score/total_keywords_score.csv", encoding='cp949', index=False)
+        if method == 'lda':
+            total_keywords = total_keywords.groupby(['Words', 'Category'], as_index=False).count()
+            total_keywords.sort_values(['Category','Topic'], ascending=[True, False], inplace=False)
+            total_keywords.rename(columns ={'Topic':'Score'}, inplace=True)
+            total_keywords['Score'] = total_keywords['Score'] / 2
+            total_keywords_score = total_keywords.pivot(index='Words', columns='Category', values='Score').reset_index().fillna(0)
+            total_keywords_score.columns = ['Word', 'International', 'Regulation', 'Corporate', 'Law', 'Market', 'Tech']
+            total_keywords_score.to_csv("./classifier/results/Score/total_keywords_score.csv", encoding='cp949', index=False)
 
 if __name__ == '__main__':
+    args = parse_args()
+    print('Called with args:')
+    print(args)
     md = MakeKewordDict()
-    md.title_keword_extract()
-    md.make_catagory_Dict()
-    md.make_keyword_score()
+    if args.method == 'title':
+        md.title_keword_extract()
+        md.make_keyword_score()
+    elif args.method == 'lda':
+        md.title_keword_extract()
+        md.make_catagory_Dict()
+        md.make_keyword_score(method='lda')
+    else:
+        print("title or lda 중에 선택하세요")

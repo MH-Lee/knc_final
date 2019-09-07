@@ -1,0 +1,501 @@
+Ranking,Company,Nation,HQ,Sector,Industry,Web
+1,Walmart,U.S.,"Bentonville, Ark.",Retailing,General Merchandisers,www.stock.walmart.com
+2,State Grid,China,Beijing,Energy,Utilities,www.sgcc.com.cn
+3,Sinopec Group,China,Beijing,Energy,Petroleum Refining,www.sinopec.com
+4,China National Petroleum,China,Beijing,Energy,Petroleum Refining,www.cnpc.com.cn
+5,Royal Dutch Shell,Netherlands,The Hague,Energy,Petroleum Refining,http://www.shell.com
+6,Toyota Motor,Japan,"Toyota, Japan",Motor Vehicles & Parts,Motor Vehicles & Parts,www.toyota-global.com
+7,Volkswagen,Germany,"Wolfsburg, Germany",Motor Vehicles & Parts,Motor Vehicles & Parts,http://www.volkswagenag.com
+8,BP,Britain,London,Energy,Petroleum Refining,www.bp.com
+9,Exxon Mobil,U.S.,"Irving, Texas",Energy,Petroleum Refining,www.exxonmobil.com
+10,Berkshire Hathaway,U.S.,Omaha,Financials,Insurance: Property and Casualty (Stock),www.berkshirehathaway.com
+11,Apple,U.S.,"Cupertino, Calif.",Technology,"Computers, Office Equipment",www.apple.com
+12,Samsung Electronics,South Korea,"Suwon, South Korea",Technology,"Electronics, Electrical Equip.",www.samsung.com
+13,McKesson,U.S.,San Francisco,Wholesalers,Wholesalers: Health Care,www.mckesson.com
+14,Glencore,Switzerland,"Baar, Switzerland",Energy,"Mining, Crude-Oil Production",www.glencore.com
+15,UnitedHealth Group,U.S.,"Minnetonka, Minn.",Health Care,Health Care: Insurance and Managed Care,www.unitedhealthgroup.com
+16,Daimler,Germany,"Stuttgart, Germany",Motor Vehicles & Parts,Motor Vehicles & Parts,www.daimler.com
+17,CVS Health,U.S.,"Woonsocket, R.I.",Health Care,Health Care: Pharmacy and Other Services,www.cvshealth.com
+18,Amazon.com,U.S.,Seattle,Technology,Internet Services and Retailing,www.amazon.com
+19,EXOR Group,Netherlands,Amsterdam,Financials,Diversified Financials,www.exor.com
+20,AT&T,U.S.,Dallas,Telecommunications,Telecommunications,www.att.com
+21,General Motors,U.S.,Detroit,Motor Vehicles & Parts,Motor Vehicles & Parts,www.gm.com
+22,Ford Motor,U.S.,"Dearborn, Mich.",Motor Vehicles & Parts,Motor Vehicles & Parts,www.corporate.ford.com
+23,China State Construction Engineering,China,Beijing,Engineering & Construction,Engineering & Construction,www.cscec.com
+24,Hon Hai Precision Industry,Taiwan,"New Taipei City, Taiwan",Technology,"Electronics, Electrical Equip.",www.foxconn.com
+25,AmerisourceBergen,U.S.,"Chesterbrook, Pa.",Wholesalers,Wholesalers: Health Care,www.amerisourcebergen.com
+26,Industrial & Commercial Bank of China,China,Beijing,Financials,Banks: Commercial and Savings,www.icbc-ltd.com
+27,AXA,France,Paris,Financials,"Insurance: Life, Health (stock)",www.axa.com
+28,Total,France,"Courbevoie, France",Energy,Petroleum Refining,www.total.com
+29,Ping An Insurance,China,"Shenzhen, China",Financials,"Insurance: Life, Health (stock)",www.pingan.com
+30,Honda Motor,Japan,Tokyo,Motor Vehicles & Parts,Motor Vehicles & Parts,www.honda.com
+31,China Construction Bank,China,Beijing,Financials,Banks: Commercial and Savings,www.ccb.com
+32,Trafigura Group,Singapore,Singapore,Wholesalers,Trading,www.trafigura.com
+33,Chevron,U.S.,"San Ramon, Calif.",Energy,Petroleum Refining,www.chevron.com
+34,Cardinal Health,U.S.,"Dublin, Ohio",Wholesalers,Wholesalers: Health Care,www.cardinalhealth.com
+35,Costco,U.S.,"Issaquah, Wash.",Retailing,General Merchandisers,www.costco.com
+36,SAIC Motor,China,Shanghai,Motor Vehicles & Parts,Motor Vehicles & Parts,www.saicmotor.com
+37,Verizon,U.S.,New York City,Telecommunications,Telecommunications,www.verizon.com
+38,Allianz,Germany,Munich,Financials,"Insurance: Life, Health (stock)",www.allianz.com
+39,Kroger,U.S.,Cincinnati,Food & Drug Stores,Food & Drug Stores,www.thekrogerco.com
+40,Agricultural Bank of China,China,Beijing,Financials,Banks: Commercial and Savings,www.abchina.com
+41,General Electric,U.S.,Boston,Industrials,Industrial Machinery,www.ge.com
+42,China Life Insurance,China,Beijing,Financials,"Insurance: Life, Health (stock)",www.chinalife.com.cn
+43,Walgreens Boots Alliance,U.S.,"Deerfield, Ill.",Food & Drug Stores,Food & Drug Stores,www.walgreensbootsalliance.com
+44,BNP Paribas,France,Paris,Financials,Banks: Commercial and Savings,www.bnpparibas.com
+45,Japan Post Holdings,Japan,Tokyo,Financials,"Insurance: Life, Health (stock)",www.japanpost.jp
+46,Bank of China,China,Beijing,Financials,Banks: Commercial and Savings,www.boc.cn
+47,JPMorgan Chase & Co.,U.S.,New York City,Financials,Banks: Commercial and Savings,www.jpmorganchase.com
+48,Fannie Mae,U.S.,Washington,Financials,Diversified Financials,www.fanniemae.com
+49,Gazprom,Russia,Moscow,Energy,Energy,www.gazprom.com
+50,Prudential,Britain,London,Financials,"Insurance: Life, Health (stock)",www.prudential.co.uk
+51,BMW Group,Germany,Munich,Motor Vehicles & Parts,Motor Vehicles & Parts,www.bmwgroup.com
+52,Alphabet,U.S.,"Mountain View, Calif.",Technology,Internet Services and Retailing,www.abc.xyz
+53,China Mobile Communications,China,Beijing,Telecommunications,Telecommunications,www.10086.cn
+54,Nissan Motor,Japan,"Yokohama, Japan",Motor Vehicles & Parts,Motor Vehicles & Parts,www.nissan-global.com
+55,Nippon Telegraph & Telephone,Japan,Tokyo,Telecommunications,Telecommunications,www.ntt.co.jp
+56,China Railway Engineering Group,China,Beijing,Engineering & Construction,Engineering & Construction,www.crecg.com
+57,Home Depot,U.S.,Atlanta,Retailing,Specialty Retailers,www.homedepot.com
+58,China Railway Construction,China,Beijing,Engineering & Construction,Engineering & Construction,www.crcc.cn
+59,Assicurazioni Generali,Italy,"Trieste, Italy",Financials,"Insurance: Life, Health (stock)",www.generali.com
+60,Bank of America Corp.,U.S.,"Charlotte, N.C.",Financials,Banks: Commercial and Savings,www.bankofamerica.com
+61,Express Scripts Holding,U.S.,St. Louis,Health Care,Health Care: Pharmacy and Other Services,www.express-scripts.com
+62,Wells Fargo,U.S.,San Francisco,Financials,Banks: Commercial and Savings,www.wellsfargo.com
+63,Lukoil,Russia,Moscow,Energy,Petroleum Refining,www.lukoil.com
+64,Boeing,U.S.,Chicago,Aerospace & Defense,Aerospace & Defense,www.boeing.com
+65,Dongfeng Motor,China,"Wuhan, China",Motor Vehicles & Parts,Motor Vehicles & Parts,www.dfmc.com.cn
+66,Siemens,Germany,Munich,Industrials,Industrial Machinery,www.siemens.com
+67,Phillips 66,U.S.,Houston,Energy,Petroleum Refining,www.phillips66.com
+68,Carrefour,France,"Boulogne-Billancourt, France",Food & Drug Stores,Food & Drug Stores,www.carrefour.com
+69,Nestle,Switzerland,"Vevey, Switzerland","Food, Beverages & Tobacco",Food Consumer Products,www.nestle.com
+70,Anthem,U.S.,Indianapolis,Health Care,Health Care: Insurance and Managed Care,www.antheminc.com
+71,Microsoft,U.S.,"Redmond, Wash.",Technology,Computer Software,www.microsoft.com
+72,Huawei Investment & Holding,China,"Shenzhen, China",Technology,Network and Other Communications Equipment,www.huawei.com
+73,Petrobras,Brazil,Rio de Janeiro,Energy,Petroleum Refining,www.petrobras.com.br
+74,Valero Energy,U.S.,San Antonio,Energy,Petroleum Refining,www.valero.com
+75,Bosch Group,Germany,"Stuttgart, Germany",Motor Vehicles & Parts,Motor Vehicles & Parts,www.bosch.com
+76,Citigroup,U.S.,New York City,Financials,Banks: Commercial and Savings,www.citigroup.com
+77,Banco Santander,Spain,Madrid,Financials,Banks: Commercial and Savings,www.santander.com
+78,Hyundai Motor,South Korea,Seoul,Motor Vehicles & Parts,Motor Vehicles & Parts,worldwide.hyundai.com
+79,Hitachi,Japan,Tokyo,Technology,"Electronics, Electrical Equip.",www.hitachi.com
+80,Comcast,U.S.,Philadelphia,Telecommunications,Telecommunications,www.comcastcorporation.com
+81,Deutsche Telekom,Germany,"Bonn, Germany",Telecommunications,Telecommunications,www.telekom.com
+82,Credit Agricole,France,Paris,Financials,Banks: Commercial and Savings,www.credit-agricole.com
+83,Enel,Italy,Rome,Energy,Utilities,www.enel.com
+84,SK Holdings,South Korea,Seoul,Energy,Petroleum Refining,www.sk.co.kr
+85,SoftBank Group,Japan,Tokyo,Telecommunications,Telecommunications,www.softbank.jp
+86,China Resources,China,Hong Kong,Health Care,Pharmaceuticals,www.crc.com.hk
+87,China National Offshore Oil,China,Beijing,Energy,"Mining, Crude-Oil Production",www.cnooc.com.cn
+88,Uniper,Germany,"D??_sseldorf, Germany",Energy,Energy,www.uniper.engergy
+89,ENI,Italy,Rome,Energy,Petroleum Refining,www.eni.com
+90,HSBC Holdings,Britain,London,Financials,Banks: Commercial and Savings,www.hsbc.com
+91,China Communications Construction,China,Beijing,Engineering & Construction,Engineering & Construction,www.ccccltd.cn
+92,IBM,U.S.,"Armonk, N.Y.",Technology,Information Technology Services,www.ibm.com
+93,Dell Technologies,U.S.,"Round Rock, Texas",Technology,"Computers, Office Equipment",www.delltechnologies.com
+94,Electricite de France,France,Paris,Energy,Utilities,www.edf.fr
+95,State Farm Insurance Cos.,U.S.,"Bloomington, Ill.",Financials,Insurance: Property and Casualty (Mutual),www.statefarm.com
+96,Pacific Construction Group,China,"Urumqi, China",Engineering & Construction,Engineering & Construction,www.cpcg.com.cn
+97,Sony,Japan,Tokyo,Technology,"Electronics, Electrical Equip.",www.sony.net
+98,Sinochem Group,China,Beijing,Wholesalers,Trading,www.sinochem.com
+99,JXTG Holdings,Japan,Tokyo,Energy,Petroleum Refining,www.hd.jxtg-group.co.jp
+100,Johnson & Johnson,U.S.,"New Brunswick, N.J.",Health Care,Pharmaceuticals,www.jnj.com
+101,China Energy Investment,China,Beijing,Energy,"Mining, Crude-Oil Production",www.shenhuagroup.com.cn
+102,Tesco,Britain,"Welwyn Garden City, Britain",Food & Drug Stores,Food & Drug Stores,www.tescoplc.com
+103,AEON,Japan,"Chiba, Japan",Food & Drug Stores,Food & Drug Stores,www.aeon.info
+104,Engie,France,"Courbevoie, France",Energy,Energy,www.engie.com
+105,Airbus Group,Netherlands,"Leiden, Netherlands",Aerospace & Defense,Aerospace & Defense,www.airbusgroup.com
+106,Freddie Mac,U.S.,"McLean, Va.",Financials,Diversified Financials,www.freddiemac.com
+107,Pemex,Mexico,Mexico City,Energy,"Mining, Crude-Oil Production",www.pemex.com
+108,Peugeot,France,"Rueil-Malmaison, France",Motor Vehicles & Parts,Motor Vehicles & Parts,www.groupe-psa.com
+109,China Minmetals,China,Beijing,Materials,Metals,www.minmetals.com
+110,China Southern Power Grid,China,"Guangzhou, China",Energy,Utilities,www.csg.cn
+111,Amer International Group,China,"Shenzhen, China",Materials,Metals,www.amer.com.cn
+112,BASF,Germany,"Ludwigshafen, Germany",Chemicals,Chemicals,www.basf.com
+113,China Post Group,China,Beijing,Transportation,"Mail, Package, and Freight Delivery",www.chinapost.com.cn
+114,Panasonic,Japan,"Osaka, Japan",Technology,"Electronics, Electrical Equip.",www.panasonic.com/global
+115,Rosneft Oil,Russia,Moscow,Energy,Petroleum Refining,www.rosneft.com
+116,Target,U.S.,Minneapolis,Retailing,General Merchandisers,www.target.com
+117,People's Insurance Co. of China,China,Beijing,Financials,Insurance: Property and Casualty (Stock),www.picc.com.cn
+118,Royal Ahold Delhaize,Netherlands,"Zaandam, Netherlands",Food & Drug Stores,Food & Drug Stores,www.aholddelhaize.com
+119,Deutsche Post DHL Group,Germany,"Bonn, Germany",Transportation,"Mail, Package, and Freight Delivery",www.dpdhl.com
+120,Munich Re Group,Germany,Munich,Financials,"Insurance: Life, Health (stock)",www.munichre.com
+121,Societe Generale,France,Paris,Financials,Banks: Commercial and Savings,www.societegenerale.com
+122,COFCO,China,Beijing,Wholesalers,Trading,www.cofco.com
+123,U.S. Postal Service,U.S.,Washington,Transportation,"Mail, Package, and Freight Delivery",www.usps.com
+124,Beijing Automotive Group,China,Beijing,Motor Vehicles & Parts,Motor Vehicles & Parts,www.baicgroup.com.cn
+125,China FAW Group,China,"Changchun, China",Motor Vehicles & Parts,Motor Vehicles & Parts,www.faw.com.cn
+126,Nippon Life Insurance,Japan,"Osaka, Japan",Financials,"Insurance: Life, Health (Mutual)",www.nissay.co.jp
+127,ArcelorMittal,Luxembourg,Luxembourg,Materials,Metals,www.arcelormittal.com
+128,Lowe's,U.S.,"Mooresville, N.C.",Retailing,Specialty Retailers,www.lowes.com
+129,Mitsubishi,Japan,Tokyo,Wholesalers,Trading,www.mitsubishicorp.com
+130,Marubeni,Japan,Tokyo,Wholesalers,Trading,www.marubeni.com
+131,Marathon Petroleum,U.S.,"Findlay, Ohio",Energy,Petroleum Refining,www.marathonpetroleum.com
+132,Tewoo Group,China,"Tianjin, China",Wholesalers,Trading,www.tewoo.com
+133,Itau Unibanco Holding,Brazil,Sao Paulo,Financials,Banks: Commercial and Savings,www.itau.com.br
+134,Renault,France,"Boulogne-Billancourt, France",Motor Vehicles & Parts,Motor Vehicles & Parts,www.groupe.renault.com
+135,Procter & Gamble,U.S.,Cincinnati,Household Products,Household and Personal Products,www.pg.com
+136,MetLife,U.S.,New York City,Financials,"Insurance: Life, Health (stock)",www.metlife.com
+137,Indian Oil,India,New Delhi,Energy,Petroleum Refining,www.iocl.com
+138,UPS,U.S.,Atlanta,Transportation,"Mail, Package, and Freight Delivery",www.ups.com
+139,Aegon,Netherlands,The Hague,Financials,"Insurance: Life, Health (stock)",www.aegon.com
+140,China North Industries Group,China,Beijing,Aerospace & Defense,Aerospace & Defense,www.norincogroup.com.cn
+141,China Telecommunications,China,Beijing,Telecommunications,Telecommunications,www.chinatelecom.com.cn
+142,Zurich Insurance Group,Switzerland,Zurich,Financials,Insurance: Property and Casualty (Stock),www.zurich.com
+143,Aviva,Britain,London,Financials,"Insurance: Life, Health (stock)",www.aviva.com
+144,PepsiCo,U.S.,"Purchase, N.Y.","Food, Beverages & Tobacco",Food Consumer Products,www.pepsico.com
+145,Dai-ichi Life Holdings,Japan,Tokyo,Financials,"Insurance: Life, Health (stock)",www.dai-ichi-life-hd.com
+146,Intel,U.S.,"Santa Clara, Calif.",Technology,Semiconductors and Other Electronic Components,www.intel.com
+147,DowDuPont,U.S.,"Wilmington, Del.",Chemicals,Chemicals,http://www.dow-dupont.com
+148,Reliance Industries,India,Mumbai,Energy,Petroleum Refining,www.ril.com
+149,CITIC Group,China,Beijing,Financials,Diversified Financials,www.group.citic
+150,Equinor,Norway,"Stavanger, Norway",Energy,Petroleum Refining,http://www.equinor.com
+151,Groupe BPCE,France,Paris,Financials,Banks: Commercial and Savings,www.groupebpce.fr
+152,Archer Daniels Midland,U.S.,Chicago,"Food, Beverages & Tobacco",Food Production,www.adm.com
+153,Unilever,Britain/Netherlands,London,Household Products,Household and Personal Products,www.unilever.com
+154,Aetna,U.S.,"Hartford, Conn.",Health Care,Health Care: Insurance and Managed Care,www.aetna.com
+155,FedEx,U.S.,Memphis,Transportation,"Mail, Package, and Freight Delivery",www.fedex.com
+156,Auchan Holding,France,"Croix, France",Food & Drug Stores,Food & Drug Stores,www.auchanholding.com
+157,Albertsons Cos.,U.S.,"Boise, Idaho",Food & Drug Stores,Food & Drug Stores,www.albertsonscompanies.com
+158,Vodafone Group,Britain,"Newbury, Britain",Telecommunications,Telecommunications,www.vodafone.com
+159,United Technologies,U.S.,"Farmington, Conn.",Aerospace & Defense,Aerospace & Defense,www.utc.com
+160,Prudential Financial,U.S.,"Newark, N.J.",Financials,"Insurance: Life, Health (stock)",www.prudential.com
+161,Aviation Industry Corp. of China,China,Beijing,Aerospace & Defense,Aerospace & Defense,www.avic.com
+162,China Baowu Steel Group,China,Shanghai,Materials,Metals,www.baowugroup.com
+163,PTT,Thailand,Bangkok,Energy,Petroleum Refining,www.pttplc.com
+164,Telefonica,Spain,Madrid,Telecommunications,Telecommunications,www.telefonica.com
+165,Toyota Tsusho,Japan,"Nagoya, Japan",Wholesalers,Trading,www.toyota-tsusho.com
+166,Banco Bradesco,Brazil,"Osasco, Brazil",Financials,Banks: Commercial and Savings,www.bradesco.com.br
+167,ChemChina,China,Beijing,Chemicals,Chemicals,www.chemchina.com
+168,Bank of Communications,China,Shanghai,Financials,Banks: Commercial and Savings,www.bankcomm.com
+169,Roche Group,Switzerland,"Basel, Switzerland",Health Care,Pharmaceuticals,www.roche.com
+170,Anheuser-Busch InBev,Belgium,"Leuven, Belgium","Food, Beverages & Tobacco",Beverages,www.ab-inbev.com
+171,ING Group,Netherlands,Amsterdam,Financials,Banks: Commercial and Savings,www.ing.com
+172,Legal & General Group,Britain,London,Financials,"Insurance: Life, Health (stock)",www.legalandgeneralgroup.com
+173,Louis Dreyfus,Netherlands,Rotterdam,"Food, Beverages & Tobacco",Food Production,www.ldc.com
+174,Sysco,U.S.,Houston,Wholesalers,Wholesalers: Food and Grocery,www.sysco.com
+175,Banco do Brasil,Brazil,Bras��_lia,Financials,Banks: Commercial and Savings,www.bb.com.br
+176,Disney,U.S.,"Burbank, Calif.",Media,Entertainment,www.disney.com
+177,Mitsubishi UFJ Financial Group,Japan,Tokyo,Financials,Banks: Commercial and Savings,www.mufg.jp
+178,LG Electronics,South Korea,Seoul,Technology,"Electronics, Electrical Equip.",www.lg.com
+179,Seven & I Holdings,Japan,Tokyo,Food & Drug Stores,Food & Drug Stores,www.7andi.com
+180,America Movil,Mexico,Mexico City,Telecommunications,Telecommunications,www.americamovil.com
+181,JD.com,China,Beijing,Technology,Internet Services and Retailing,www.jd.com
+182,PowerChina,China,Beijing,Engineering & Construction,Engineering & Construction,www.powerchina.cn
+183,Humana,U.S.,"Louisville, Ky.",Health Care,Health Care: Insurance and Managed Care,www.humana.com
+184,POSCO,South Korea,Seoul,Materials,Metals,www.posco.com
+185,Shandong Weiqiao Pioneering Group,China,"Shandong, China",Industrials,Textiles,www.weiqiaocy.com
+186,Tokyo Electric Power,Japan,Tokyo,Energy,Utilities,www.tepco.co.jp
+187,Pfizer,U.S.,New York City,Health Care,Pharmaceuticals,www.pfizer.com
+188,Korea Electric Power,South Korea,"Jeollanam-do, South Korea",Energy,Utilities,www.kepco.co.kr
+189,Lloyds Banking Group,Britain,London,Financials,Banks: Commercial and Savings,www.lloydsbankinggroup.com
+190,HP,U.S.,"Palo Alto, Calif.",Technology,"Computers, Office Equipment",www.hp.com
+191,Petronas,Malaysia,Kuala Lumpur,Energy,Petroleum Refining,www.petronas.com
+192,Sumitomo Mitsui Financial Group,Japan,Tokyo,Financials,Banks: Commercial and Savings,www.smfg.co.jp
+193,Bayer,Germany,"Leverkusen, Germany",Health Care,Pharmaceuticals,www.bayer.com
+194,Sinopharm,China,Beijing,Health Care,Pharmaceuticals,www.sinopharm.com
+195,Wesfarmers,Australia,"Perth, Australia",Food & Drug Stores,Food & Drug Stores,www.wesfarmers.com.au
+196,Finatis,France,Paris,Food & Drug Stores,Food & Drug Stores,www.finatis.fr
+197,Oil & Natural Gas,India,"Dehradun, India",Energy,"Mining, Crude-Oil Production",www.ongcindia.com
+198,Nippon Steel & Sumitomo Metal,Japan,Tokyo,Materials,Metals,www.nssmc.com
+199,JBS,Brazil,Sao Paulo,"Food, Beverages & Tobacco",Food Production,jbss.infoinvest.com.br
+200,Lockheed Martin,U.S.,"Bethesda, Md.",Aerospace & Defense,Aerospace & Defense,www.lockheedmartin.com
+201,CNP Assurances,France,Paris,Financials,"Insurance: Life, Health (stock)",www.cnp.fr
+202,Guangzhou Automobile Industry Group,China,"Guangzhou, China",Motor Vehicles & Parts,Motor Vehicles & Parts,www.gagc.com.cn
+203,Novartis,Switzerland,"Basel, Switzerland",Health Care,Pharmaceuticals,www.novartis.com
+204,Itochu,Japan,"Osaka, Japan",Wholesalers,Trading,www.itochu.co.jp
+205,Sberbank,Russia,Moscow,Financials,Banks: Commercial and Savings,www.sberbank.ru
+206,Continental,Germany,"Hanover, Germany",Motor Vehicles & Parts,Motor Vehicles & Parts,www.continental-corporation.com
+207,AIG,U.S.,New York City,Financials,Insurance: Property and Casualty (Stock),www.aig.com
+208,Christian Dior,France,Paris,Apparel,Apparel,www.dior-finance.com
+209,Tokio Marine Holdings,Japan,Tokyo,Financials,Insurance: Property and Casualty (Stock),www.tokiomarinehd.com
+210,Centene,U.S.,St. Louis,Health Care,Health Care: Insurance and Managed Care,www.centene.com
+211,Deutsche Bahn,Germany,Berlin,Transportation,Railroads,www.deutschebahn.com
+212,Cisco Systems,U.S.,"San Jose, Calif.",Technology,Network and Other Communications Equipment,www.cisco.com
+213,China Merchants Bank,China,"Shenzhen, China",Financials,Banks: Commercial and Savings,www.cmbchina.com
+214,RWE,Germany,"Essen, Germany",Energy,Utilities,www.rwe.com
+215,HCA Healthcare,U.S.,Nashville,Health Care,Health Care: Medical Facilities,http://www.hcahealthcare.com
+216,State Bank of India,India,Mumbai,Financials,Banks: Commercial and Savings,www.sbi.co.in
+217,Energy Transfer Equity,U.S.,Dallas,Energy,Pipelines,www.energytransfer.com
+218,ThyssenKrupp,Germany,"Essen, Germany",Materials,Metals,www.thyssenkrupp.com
+219,Kia Motors,South Korea,Seoul,Motor Vehicles & Parts,Motor Vehicles & Parts,www.kia.com
+220,China Pacific Insurance (Group),China,Shanghai,Financials,"Insurance: Life, Health (stock)",www.cpic.com.cn
+221,MS&AD Insurance Group Holdings,Japan,Tokyo,Financials,Insurance: Property and Casualty (Stock),www.ms-ad-hd.com
+222,Aluminum Corp. of China,China,Beijing,Materials,Metals,www.chalco.com.cn
+223,Deutsche Bank,Germany,Frankfurt,Financials,Banks: Commercial and Savings,www.db.com
+224,Banco Bilbao Vizcaya Argentaria,Spain,"Bilbao, Spain",Financials,Banks: Commercial and Savings,www.bbva.com
+225,Orange,France,Paris,Telecommunications,Telecommunications,www.orange.com
+226,Vinci,France,"Rueil-Malmaison, France",Engineering & Construction,Engineering & Construction,www.vinci.com
+227,Shanghai Pudong Development Bank,China,Shanghai,Financials,Banks: Commercial and Savings,www.spdb.com.cn
+228,Woolworths Group,Australia,"Bella Vista, Australia",Food & Drug Stores,Food & Drug Stores,http://www.woolworthslimited.com.au
+229,Denso,Japan,"Kariya, Japan",Motor Vehicles & Parts,Motor Vehicles & Parts,www.denso.com/global
+230,China Evergrande Group,China,"Shenzen, China",Financials,Real estate,www.evergrande.com
+231,Saint-Gobain,France,"Courbevoie, France",Materials,"Building Materials, Glass",www.saint-gobain.com
+232,Tata Motors,India,Mumbai,Motor Vehicles & Parts,Motor Vehicles & Parts,www.tatamotors.com
+233,Bunge,U.S.,"White Plains, N.Y.","Food, Beverages & Tobacco",Food Production,www.bunge.com
+234,Shandong Energy Group,China,"Jinan , China",Energy,"Mining, Crude-Oil Production",www.snjt.com
+235,Hengli Group,China,"Suzhou City, China",Industrials,Textiles,www.hengli.com
+236,KDDI,Japan,Tokyo,Telecommunications,Telecommunications,www.kddi.com
+237,Industrial Bank,China,"Fuzhou, China",Financials,Banks: Commercial and Savings,www.cib.com.cn
+238,Caterpillar,U.S.,"Deerfield, Ill.",Industrials,Construction and Farm Machinery,www.caterpillar.com
+239,HBIS Group,China,"Shijiazhuang, China",Materials,Metals,www.hbisco.com
+240,Lenovo Group,China,Hong Kong,Technology,"Computers, Office Equipment",www.lenovo.com
+241,Manulife Financial,Canada,"Toronto, Ontario, Canada",Financials,"Insurance: Life, Health (stock)",www.manulife.com
+242,China South Industries Group,China,Beijing,Aerospace & Defense,Aerospace & Defense,www.chinasouth.com.cn
+243,China National Building Material Group,China,Beijing,Materials,"Building Materials, Glass",www.cnbm.com.cn
+244,Hanwha,South Korea,Seoul,Financials,"Insurance: Life, Health (stock)",www.hanwhacorp.co.kr
+245,China Shipbuilding Industry,China,Beijing,Industrials,Shipping,www.csic.com.cn
+246,Mitsui,Japan,Tokyo,Wholesalers,Trading,www.mitsui.com
+247,Nationwide,U.S.,"Columbus, Ohio",Financials,Insurance: Property and Casualty (Mutual),www.nationwide.com
+248,Wilmar International,Singapore,Singapore,"Food, Beverages & Tobacco",Food Production,www.wilmar-international.com
+249,Morgan Stanley,U.S.,New York City,Financials,Banks: Commercial and Savings,www.morganstanley.com
+250,Sumitomo,Japan,Tokyo,Wholesalers,Trading,www.sumitomocorp.co.jp
+251,China Minsheng Banking,China,Beijing,Financials,Banks: Commercial and Savings,www.cmbc.com.cn
+252,Greenland Holding Group,China,Shanghai,Financials,Real estate,www.ldjt.com.cn
+253,Pertamina,Indonesia,Jakarta,Energy,Petroleum Refining,www.pertamina.com
+254,E.ON,Germany,"Essen, Germany",Energy,Energy,www.eon.com
+255,Liberty Mutual Insurance Group,U.S.,Boston,Financials,Insurance: Property and Casualty (Stock),www.libertymutual.com
+256,Sinomach,China,Beijing,Industrials,Industrial Machinery,www.sinomach.com.cn
+257,Swiss Re,Switzerland,Zurich,Financials,Insurance: Property and Casualty (Stock),www.swissre.com
+258,New York Life Insurance,U.S.,New York City,Financials,"Insurance: Life, Health (Mutual)",www.newyorklife.com
+259,Goldman Sachs Group,U.S.,New York City,Financials,Banks: Commercial and Savings,www.gs.com
+260,American Airlines Group,U.S.,Fort Worth,Transportation,Airlines,www.aa.com
+261,Best Buy,U.S.,"Richfield, Minn.",Retailing,Specialty Retailers,www.bestbuy.com
+262,Repsol,Spain,Madrid,Energy,Petroleum Refining,www.repsol.com
+263,Cigna,U.S.,"Bloomfield, Conn.",Health Care,Health Care: Insurance and Managed Care,www.cigna.com
+264,Charter Communications,U.S.,"Stamford, Conn.",Telecommunications,Telecommunications,www.charter.com
+265,SSE,Britain,"Perth, Britain",Energy,Utilities,www.sse.com
+266,Delta Air Lines,U.S.,Atlanta,Transportation,Airlines,www.delta.com
+267,Zhejiang Geely Holding Group,China,"Hangzhou, China",Motor Vehicles & Parts,Motor Vehicles & Parts,www.geely.com
+268,ZF Friedrichshafen,Germany,"Friedrichshafen, Germany",Motor Vehicles & Parts,Motor Vehicles & Parts,www.zf.com
+269,Metro,Germany,"D��_sseldorf, Germany",Food & Drug Stores,Food & Drug Stores,www.metroag.de
+270,Wuchan Zhongda Group,China,"Hangzhou, China",Wholesalers,Trading,www.zjmi.com
+271,Sanofi,France,Paris,Health Care,Pharmaceuticals,www.sanofi.com
+272,Brookfield Asset Management,Canada,"Toronto, Ontario, Canada",Financials,Diversified Financials,www.brookfield.com
+273,China United Network Communications,China,Beijing,Telecommunications,Telecommunications,www.chinaunicom-a.com
+274,Facebook,U.S.,"Menlo Park, Calif.",Technology,Internet Services and Retailing,www.facebook.com
+275,Honeywell International,U.S.,"Morris Plains, N.J.",Technology,"Electronics, Electrical Equip.",www.honeywell.com
+276,Merck,U.S.,"Kenilworth, N.J.",Health Care,Pharmaceuticals,www.merck.com
+277,Lufthansa Group,Germany,"Cologne, Germany",Transportation,Airlines,www.lufthansagroup.com
+278,Rio Tinto Group,Britain,London,Energy,"Mining, Crude-Oil Production",www.riotinto.com
+279,Mitsubishi Electric,Japan,Tokyo,Technology,"Electronics, Electrical Equip.",www.mitsubishielectric.com
+280,China Merchants Group,China,Hong Kong,Transportation,"Mail, Package, and Freight Delivery",www.cmhk.com
+281,SABIC,Saudi Arabia,Riyadh,Chemicals,Chemicals,www.sabic.com
+282,Power Corp. of Canada,Canada,"Montreal, Quebec, Canada",Financials,"Insurance: Life, Health (stock)",www.powercorporation.com
+283,Jardine Matheson,China,Hong Kong,Motor Vehicles & Parts,Motor Vehicles & Parts,www.jardines.com
+284,ACS,Spain,Madrid,Engineering & Construction,Engineering & Construction,www.grupoacs.com
+285,Pegatron,Taiwan,Taipei,Technology,"Electronics, Electrical Equip.",www.pegatroncorp.com
+286,Volvo,Sweden,"G��_teborg, Sweden",Motor Vehicles & Parts,Motor Vehicles & Parts,www.volvogroup.com
+287,Magna International,Canada,"Aurora, Ontario, Canada",Motor Vehicles & Parts,Motor Vehicles & Parts,www.magna.com
+288,Shaanxi Yanchang Petroleum (Group),China,"Xi'an, China",Energy,"Mining, Crude-Oil Production",www.sxycpc.com
+289,China Huaneng Group,China,Beijing,Energy,Energy,www.chng.com.cn
+290,GlaxoSmithKline,Britain,"Brentford, Britain",Health Care,Pharmaceuticals,www.gsk.com
+291,Talanx,Germany,"Hanover, Germany",Financials,Insurance: Property and Casualty (Stock),www.talanx.com
+292,Royal Bank of Canada,Canada,"Toronto, Ontario, Canada",Financials,Banks: Commercial and Savings,www.rbc.com
+293,Allstate,U.S.,"Northbrook, Ill.",Financials,Insurance: Property and Casualty (Stock),www.allstate.com
+294,Shaanxi Coal & Chemical Industry,China,"Xi'an, China",Energy,"Mining, Crude-Oil Production",www.shccig.com
+295,AIA Group,China,Hong Kong,Financials,"Insurance: Life, Health (stock)",www.aia.com
+296,BHP Billiton,Australia,Melbourne,Energy,"Mining, Crude-Oil Production",www.bhpbilliton.com
+297,Tyson Foods,U.S.,"Springdale, Ark.","Food, Beverages & Tobacco",Food Production,www.tysonfoods.com
+298,Fresenius,Germany,"Bad Homburg, Germany",Health Care,Health Care: Medical Facilities,www.fresenius.com
+299,Alimentation Couche-Tard,Canada,"Laval, Quebec, Canada",Food & Drug Stores,Food & Drug Stores,http://corpo.couche-tard.com
+300,Alibaba Group Holding,China,"Hangzhou, China",Technology,Internet Services and Retailing,www.alibabagroup.com
+301,United Continental Holdings,U.S.,Chicago,Transportation,Airlines,www.united.com
+302,Oracle,U.S.,"Redwood City, Calif.",Technology,Computer Software,www.oracle.com
+303,J. Sainsbury,Britain,London,Food & Drug Stores,Food & Drug Stores,www.j-sainsbury.co.uk
+304,Poste Italiane,Italy,Rome,Financials,"Insurance: Life, Health (stock)",www.posteitaliane.it
+305,Maersk Group,Denmark,Copenhagen,Transportation,Shipping,www.maersk.com
+306,UBS Group,Switzerland,Zurich,Financials,Banks: Commercial and Savings,www.ubs.com
+307,Bouygues,France,Paris,Engineering & Construction,Engineering & Construction,www.bouygues.com
+308,George Weston,Canada,"Toronto, Ontario, Canada",Food & Drug Stores,Food & Drug Stores,www.weston.ca
+309,Meiji Yasuda Life Insurance,Japan,Tokyo,Financials,"Insurance: Life, Health (Mutual)",www.meijiyasuda.co.jp
+310,Edeka Zentrale,Germany,Hamburg,Wholesalers,Wholesalers: Food and Grocery,www.edeka-verbund.de
+311,Mitsubishi Heavy Industries,Japan,Tokyo,Industrials,Industrial Machinery,www.mhi.com
+312,China Poly Group,China,Beijing,Financials,Real estate,www.poly.com.cn
+313,Fujitsu,Japan,Tokyo,Technology,Information Technology Services,www.fujitsu.com
+314,Bharat Petroleum,India,Mumbai,Energy,Petroleum Refining,www.bharatpetroleum.in
+315,Tech Data,U.S.,"Clearwater, Fla.",Wholesalers,Wholesalers: Electronics and Office Equipment,www.techdata.com
+316,Accenture,Ireland,Dublin,Technology,Information Technology Services,www.accenture.com
+317,Canon,Japan,Tokyo,Technology,"Computers, Office Equipment",www.canon.com
+318,Centrica,Britain,"Windsor, Britain",Energy,Utilities,www.centrica.com
+319,TIAA,U.S.,New York City,Financials,"Insurance: Life, Health (Mutual)",www.tiaa.org
+320,SNCF Mobilites,France,"St. Denis, France",Transportation,Railroads,www.sncf.com
+321,TJX,U.S.,"Framingham, Mass.",Retailing,Specialty Retailers,www.tjx.com
+322,China Everbright Group,China,Beijing,Financials,Banks: Commercial and Savings,www.ebchina.com
+323,Midea Group,China,"Foshan, China",Technology,"Electronics, Electrical Equip.",www.midea.com
+324,Intesa Sanpaolo,Italy,"Turin, Italy",Financials,Banks: Commercial and Savings,www.group.intesasanpaolo.com
+325,Vale,Brazil,Rio de Janeiro,Energy,"Mining, Crude-Oil Production",www.vale.com
+326,Toshiba,Japan,Tokyo,Technology,"Electronics, Electrical Equip.",www.toshiba.co.jp
+327,American Express,U.S.,New York City,Financials,Diversified Financials,www.americanexpress.com
+328,Coca-Cola,U.S.,Atlanta,"Food, Beverages & Tobacco",Beverages,www.coca-colacompany.com
+329,Aisin Seiki,Japan,"Kariya, Japan",Motor Vehicles & Parts,Motor Vehicles & Parts,www.aisin.com
+330,Iberdrola,Spain,"Bilbao, Spain",Energy,Utilities,www.iberdrola.com
+331,Tencent Holdings,China,"Shenzhen, China",Technology,Internet Services and Retailing,www.tencent.com
+332,China Vanke,China,"Shenzhen, China",Financials,Real estate,www.vanke.com
+333,China Energy Engineering Group,China,Beijing,Engineering & Construction,Engineering & Construction,www.ceec.net.cn
+334,Publix Super Markets,U.S.,"Lakeland, Fla.",Food & Drug Stores,Food & Drug Stores,www.publix.com
+335,China COSCO Shipping,China,Shanghai,Transportation,Shipping,www.coscoshipping.com
+336,Barclays,Britain,London,Financials,Banks: Commercial and Savings,www.home.barclays
+337,Toronto-Dominion Bank,Canada,"Toronto, Ontario, Canada",Financials,Banks: Commercial and Savings,www.tdbank.com
+338,LyondellBasell Industries,Netherlands,Rotterdam,Chemicals,Chemicals,www.lyb.com
+339,Noble Group,China,Hong Kong,Wholesalers,Trading,www.thisisnoble.com
+340,Nike,U.S.,"Beaverton, Ore.",Apparel,Apparel,www.nike.com
+341,ABB,Switzerland,Zurich,Industrials,Industrial Machinery,www.abb.com
+342,Daiwa House Industry,Japan,"Osaka, Japan",Engineering & Construction,Engineering & Construction,www.daiwahouse.co.jp
+343,China Aerospace Science & Technology,China,Beijing,Aerospace & Defense,Aerospace & Defense,www.spacechina.com
+344,Andeavor,U.S.,San Antonio,Energy,Petroleum Refining,http://www.andeavor.com
+345,Enbridge,Canada,"Calgary, Alberta, Canada",Energy,Pipelines,www.enbridge.com
+346,China Aerospace Science & Industry,China,Beijing,Aerospace & Defense,Aerospace & Defense,www.casic.com.cn
+347,Sompo Holdings,Japan,Tokyo,Financials,Insurance: Property and Casualty (Stock),www.sompo-hd.com
+348,Suzuki Motor,Japan,"Hamamatsu, Japan",Motor Vehicles & Parts,Motor Vehicles & Parts,www.globalsuzuki.com
+349,Commonwealth Bank of Australia,Australia,Sydney,Financials,Banks: Commercial and Savings,www.commbank.com.au
+350,Sumitomo Life Insurance,Japan,"Osaka, Japan",Financials,"Insurance: Life, Health (Mutual)",www.sumitomolife.co.jp
+351,World Fuel Services,U.S.,Miami,Energy,Energy,www.wfscorp.com
+352,Mitsubishi Chemical Holdings,Japan,Tokyo,Chemicals,Chemicals,www.mitsubishichem-hd.co.jp
+353,Country Garden Holdings,China,"Foshan, China",Financials,Real estate,www.countrygarden.com.cn
+354,Quanta Computer,Taiwan,"Taoyuan, Taiwan",Technology,"Computers, Office Equipment",www.quantatw.com
+355,DZ Bank,Germany,Frankfurt,Financials,Banks: Commercial and Savings,www.dzbank.com
+356,Exelon,U.S.,Chicago,Energy,Utilities,www.exeloncorp.com
+357,Massachusetts Mutual Life Insurance,U.S.,"Springfield, Mass.",Financials,"Insurance: Life, Health (Mutual)",www.massmutual.com
+358,JFE Holdings,Japan,Tokyo,Materials,Metals,www.jfe-holdings.co.jp
+359,Jizhong Energy Group,China,"Xingtai, China",Energy,"Mining, Crude-Oil Production",www.jznyjt.com
+360,Xiamen ITG Holding Group,China,"Xiamen, China",Wholesalers,Trading,www.itgholding.com.cn
+361,Cedar Holdings Group,China,"Guangzhou, China",Wholesalers,Trading,www.cedarhd.com
+362,Xiamen C&D,China,"Xiamen, China",Wholesalers,Trading,www.chinacdc.com
+363,ConocoPhillips,U.S.,Houston,Energy,"Mining, Crude-Oil Production",www.conocophillips.com
+364,Jiangsu Shagang Group,China,"Zhangjiagang, China",Materials,Metals,www.shasteel.cn
+365,Bridgestone,Japan,Tokyo,Motor Vehicles & Parts,Motor Vehicles & Parts,www.bridgestone.com
+366,Chubb,Switzerland,Zurich,Financials,Insurance: Property and Casualty (Stock),www.chubb.com
+367,Mizuho Financial Group,Japan,Tokyo,Financials,Banks: Commercial and Savings,www.mizuho-fg.co.jp
+368,Taiwan Semiconductor Manufacturing,Taiwan,"Hsinchu, Taiwan",Technology,Semiconductors and Other Electronic Components,www.tsmc.com
+369,China Electronics,China,Beijing,Technology,"Electronics, Electrical Equip.",www.cec.com.cn
+370,Jiangxi Copper,China,"Guixi, China",Energy,"Mining, Crude-Oil Production",www.jxcc.com
+371,China National Aviation Fuel Group,China,Beijing,Wholesalers,Trading,www.cnaf.com
+372,CHS,U.S.,"Inver Grove Heights, Minn.","Food, Beverages & Tobacco",Food Production,www.chsinc.com
+373,Credit Suisse Group,Switzerland,Zurich,Financials,Banks: Commercial and Savings,www.credit-suisse.com
+374,CK Hutchison Holdings,China,Hong Kong,Retailing,Specialty Retailers,www.ckh.com.hk
+375,Xiamen Xiangyu Group,China,"Xiamen City, China",Wholesalers,Trading,www.xiangyu-group.com
+376,3M,U.S.,"St. Paul, Minn.",Industrials,Chemicals,www.3m.com
+377,BT Group,Britain,London,Telecommunications,Telecommunications,www.btplc.com
+378,Mazda Motor,Japan,Hiroshima,Motor Vehicles & Parts,Motor Vehicles & Parts,www.mazda.com
+379,Time Warner,U.S.,New York City,Media,Entertainment,www.warnermediagroup.com
+380,Hyundai Mobis,South Korea,Seoul,Motor Vehicles & Parts,Motor Vehicles & Parts,www.mobis.co.kr
+381,Xinxing Cathay International Group,China,Beijing,Materials,Metals,www.xxcig.com
+382,CRH,Ireland,Dublin,Materials,"Building Materials, Glass",www.crh.com
+383,General Dynamics,U.S.,"Falls Church, Va.",Aerospace & Defense,Aerospace & Defense,www.generaldynamics.com
+384,Subaru,Japan,Tokyo,Motor Vehicles & Parts,Motor Vehicles & Parts,www.subaru.co.jp
+385,CRRC,China,Beijing,Industrials,Industrial Machinery,www.crrcgc.cc
+386,Schlumberger,U.S.,Houston,Energy,"Oil & Gas Equipment, Services",www.slb.com
+387,Rite Aid,U.S.,"Camp Hill, Pa.",Food & Drug Stores,Food & Drug Stores,www.riteaid.com
+388,China Electronics Technology Group,China,Beijing,Aerospace & Defense,Aerospace & Defense,www.cetc.com.cn
+389,Johnson Controls International,Ireland,"Cork, Ireland",Industrials,Industrial Machinery,www.johnsoncontrols.com
+390,USAA,U.S.,San Antonio,Financials,Insurance: Property and Casualty (Stock),www.usaa.com
+391,Capital One Financial,U.S.,"McLean, Va.",Financials,Banks: Commercial and Savings,www.capitalone.com
+392,L'Oreal,France,"Clichy, France",Household Products,Household and Personal Products,www.loreal.com
+393,China State Shipbuilding,China,Beijing,Industrials,Shipping,www.cssc.net.cn
+394,Deere,U.S.,"Moline, Ill.",Industrials,Construction and Farm Machinery,www.johndeere.com
+395,State Power Investment,China,Beijing,Energy,Energy,www.spic.com.cn
+396,Medtronic,Ireland,Dublin,Health Care,Medical Products and Equipment,www.medtronic.com
+397,China Huadian,China,Beijing,Energy,Utilities,www.chd.com.cn
+398,Idemitsu Kosan,Japan,Tokyo,Energy,Petroleum Refining,www.idemitsu.com
+399,Yankuang Group,China,"Shandong, China",Energy,"Mining, Crude-Oil Production",www.ykjt.cn
+400,INTL FCStone,U.S.,New York City,Financials,Diversified Financials,www.intlfcstone.com
+401,Northwestern Mutual,U.S.,Milwaukee,Financials,"Insurance: Life, Health (Mutual)",www.northwesternmutual.com
+402,UniCredit Group,Italy,Milan,Financials,Banks: Commercial and Savings,www.unicreditgroup.eu
+403,Enterprise Products Partners,U.S.,Houston,Energy,Pipelines,www.enterpriseproducts.com
+404,Compal Electronics,Taiwan,Taipei,Technology,"Computers, Office Equipment",www.compal.com
+405,Rajesh Exports,India,"Bengaluru, India",Wholesalers,Trading,www.rajeshindia.com
+406,Air France-KLM Group,France,Paris,Transportation,Airlines,www.airfranceklm.com
+407,Travelers Cos.,U.S.,New York City,Financials,Insurance: Property and Casualty (Stock),www.travelers.com
+408,Inditex,Spain,"Arteixo, Spain",Retailing,Specialty Retailers,www.inditex.com
+409,Hewlett Packard Enterprise,U.S.,"Palo Alto, Calif.",Technology,"Computers, Office Equipment",www.hpe.com
+410,Cathay Life Insurance,Taiwan,Taipei,Financials,"Insurance: Life, Health (stock)",www.cathaylife.com.tw
+411,Philip Morris International,U.S.,New York City,"Food, Beverages & Tobacco",Tobacco,www.pmi.com
+412,Coop Group,Switzerland,"Basel, Switzerland",Food & Drug Stores,Food & Drug Stores,www.coop.ch
+413,Compass Group,Britain,"Chertsey, Britain",Business Services,Food Services,www.compass-group.com
+414,Westpac Banking,Australia,Sydney,Financials,Banks: Commercial and Savings,www.westpac.com.au
+415,Migros Group,Switzerland,Zurich,Food & Drug Stores,Food & Drug Stores,www.migros.ch
+416,Twenty-First Century Fox,U.S.,New York City,Media,Entertainment,www.21cf.com
+417,Phoenix Pharma,Germany,"Mannheim, Germany",Wholesalers,Wholesalers: Health Care,http://www.phoenixgroup.eu
+418,Medipal Holdings,Japan,Tokyo,Wholesalers,Wholesalers: Health Care,www.medipal.co.jp
+419,Veolia Environnement,France,Paris,Energy,Utilities,www.veolia.com
+420,Kansai Electric Power,Japan,"Osaka, Japan",Energy,Utilities,www.kepco.co.jp
+421,Samsung Life Insurance,South Korea,Seoul,Financials,"Insurance: Life, Health (stock)",www.samsunglife.com
+422,AbbVie,U.S.,"North Chicago, Ill.",Health Care,Pharmaceuticals,www.abbvie.com
+423,Royal Philips,Netherlands,Amsterdam,Health Care,Medical Products and Equipment,www.philips.com
+424,Schneider Electric,France,"Rueil-Malmaison, France",Technology,"Electronics, Electrical Equip.",www.schneider-electric.com
+425,Sumitomo Electric Industries,Japan,"Osaka, Japan",Motor Vehicles & Parts,Motor Vehicles & Parts,www.global-sei.com
+426,Danone,France,Paris,"Food, Beverages & Tobacco",Food Consumer Products,www.danone.com
+427,Suning.com Group,China,"Nanjing, China",Retailing,Specialty Retailers,http://www.suning.com
+428,Ansteel Group,China,"Anshan, China",Materials,Metals,www.ansteel.cn
+429,Gas Natural Fenosa,Spain,Madrid,Energy,Utilities,www.gasnaturalfenosa.com
+430,Bank of Nova Scotia,Canada,"Toronto, Ontario, Canada",Financials,Banks: Commercial and Savings,www.scotiabank.com
+431,Shougang Group,China,Beijing,Materials,Metals,www.shougang.com.cn
+432,Wistron,Taiwan,Taipei,Technology,"Computers, Office Equipment",www.wistron.com
+433,Abbott Laboratories,U.S.,"Abbott Park, Ill.",Health Care,Medical Products and Equipment,www.abbott.com
+434,La Poste,France,Paris,Transportation,"Mail, Package, and Freight Delivery",www.laposte.fr
+435,Koc Holding,Turkey,Istanbul,Energy,Energy,www.koc.com.tr
+436,CPC,Taiwan,"Kaohsiung , Taiwan",Energy,Petroleum Refining,www.cpc.com.tw
+437,Progressive,U.S.,"Mayfield Village, Ohio",Financials,Insurance: Property and Casualty (Stock),www.progressive.com
+438,GS Caltex,South Korea,Seoul,Energy,Petroleum Refining,www.gscaltex.com
+439,Mapfre Group,Spain,Madrid,Financials,Insurance: Property and Casualty (Stock),www.mapfre.com
+440,Arrow Electronics,U.S.,"Centennial, Colo.",Wholesalers,Wholesalers: Electronics and Office Equipment,www.arrow.com
+441,Adecco Group,Switzerland,Zurich,Business Services,Human Resources & Employment Services,www.adeccogroup.com
+442,SK Hynix,South Korea,"Gyeonggi, South Korea",Technology,Semiconductors and Other Electronic Components,www.skhynix.com
+443,East Japan Railway,Japan,Tokyo,Transportation,Railroads,www.jreast.co.jp
+444,LafargeHolcim,Switzerland,"Jona, Switzerland",Materials,"Building Materials, Glass",www.lafargeholcim.com
+445,Altice,Netherlands,Amsterdam,Telecommunications,Telecommunications,www.altice.net
+446,SAP,Germany,"Walldorf, Germany",Technology,Computer Software,www.sap.com
+447,Onex,Canada,"Toronto, Ontario, Canada",Technology,Diversified Financials,www.onex.com
+448,Australia & New Zealand Banking Group,Australia,"Docklands, Australia",Financials,Banks: Commercial and Savings,www.anz.com
+449,Anglo American,Britain,London,Energy,"Mining, Crude-Oil Production",www.angloamerican.com
+450,Randstad Holding,Netherlands,"Diemen, Netherlands",Business Services,Human Resources & Employment Services,www.randstad.com
+451,Kraft Heinz,U.S.,Pittsburgh,"Food, Beverages & Tobacco",Food Consumer Products,www.kraftheinzcompany.com
+452,Plains GP Holdings,U.S.,Houston,Energy,Pipelines,www.plainsallamerican.com
+453,British American Tobacco,Britain,London,"Food, Beverages & Tobacco",Tobacco,www.bat.com
+454,CFE,Mexico,Mexico City,Energy,Utilities,www.cfe.gob.mx
+455,Gilead Sciences,U.S.,"Foster City, Calif.",Health Care,Pharmaceuticals,www.gilead.com
+456,Xinjiang Guanghui Industry Investment,China,"Urumqi, China",Wholesalers,Trading,www.guanghui.com
+457,Nokia,Finland,"Espoo, Finland",Technology,Network and Other Communications Equipment,www.nokia.com
+458,Samsung C&T,South Korea,Seoul,Wholesalers,Trading,www.samsungcnt.com
+459,Mondelez International,U.S.,"Deerfield, Ill.","Food, Beverages & Tobacco",Food Consumer Products,www.mondelezinternational.com
+460,International Airlines Group,Britain,"Harmondsworth, Britain",Transportation,Airlines,www.iairgroup.com
+461,Northrop Grumman,U.S.,"Falls Church, Va.",Aerospace & Defense,Aerospace & Defense,www.northropgrumman.com
+462,Chubu Electric Power,Japan,"Nagoya, Japan",Energy,Utilities,www.chuden.co.jp
+463,NEC,Japan,Tokyo,Technology,Information Technology Services,www.nec.com
+464,Yango Longking Group,China,"Fuzhou, China",Financials,Diversified Financials,http://www.yangholdings.com
+465,China Taiping Insurance Group,China,Hong Kong,Financials,"Insurance: Life, Health (Mutual)",www.cntaiping.com
+466,Flex,Singapore,Singapore,Technology,Semiconductors and Other Electronic Components,www.flex.com
+467,Raytheon,U.S.,"Waltham, Mass.",Aerospace & Defense,Aerospace & Defense,www.raytheon.com
+468,China Datang,China,Beijing,Energy,Energy,www.china-cdt.com
+469,PKN ORLEN Group,Poland,"Plock, Poland",Energy,Petroleum Refining,www.orlen.pl
+470,Ultrapar Holdings,Brazil,Sao Paulo,Energy,Petroleum Refining,www.ultra.com.br
+471,KB Financial Group,South Korea,Seoul,Financials,Banks: Commercial and Savings,www.kbfg.com
+472,Achmea,Netherlands,"Zeist, Netherlands",Financials,"Insurance: Life, Health (Mutual)",www.achmea.com
+473,Macy's,U.S.,Cincinnati,Retailing,General Merchandisers,www.macysinc.com
+474,Emirates Group,United Arab Emirates,Dubai,Transportation,Airlines,www.theemiratesgroup.com
+475,Heineken Holding,Netherlands,Amsterdam,"Food, Beverages & Tobacco",Beverages,www.theheinekencompany.com
+476,Suncor Energy,Canada,"Calgary, Alberta, Canada",Energy,Petroleum Refining,http://www.suncor.com
+477,Energie Baden-Wurttemberg,Germany,"Karlsruhe, Germany",Energy,Utilities,www.enbw.com
+478,Michelin,France,"Clermont-Ferrand, France",Motor Vehicles & Parts,Motor Vehicles & Parts,www.michelin.com
+479,Fubon Financial Holding,Taiwan,Taipei,Financials,"Insurance: Life, Health (stock)",www.fubon.com
+480,Adidas,Germany,"Herzogenaurach, Germany",Apparel,Apparel,www.adidas-group.com
+481,Shanxi Jincheng Anthracite Coal Mining Group,China,"Jincheng, China",Energy,"Mining, Crude-Oil Production",www.jamg.cn
+482,Heraeus Holding,Germany,"Hanau, Germany",Materials,Metals,www.heraeus.com
+483,LG Display,South Korea,Seoul,Technology,"Electronics, Electrical Equip.",www.lgdisplay.com
+484,DXC Technology,U.S.,"Tysons, Va.",Financials,Information Technology Services,www.dxc.technology
+485,National Australia Bank,Australia,"Docklands, Australia",Financials,Banks: Commercial and Savings,www.nab.com.au
+486,Ceconomy,Germany,-,Retailing,Specialty Retailers,http://www.ceconomy.de
+487,Fomento Economico Mexicano,Mexico,"Monterrey, Mexico","Food, Beverages & Tobacco",Beverages,www.femsa.com
+488,US Foods Holding,U.S.,"Rosemont, Ill.",Wholesalers,Wholesalers: Food and Grocery,www.usfoods.com
+489,Taikang Insurance Group,China,Beijing,Financials,"Insurance: Life, Health (Mutual)",www.taikang.com
+490,U.S. Bancorp,U.S.,Minneapolis,Financials,Banks: Commercial and Savings,www.usbank.com
+491,Boehringer Ingelheim,Germany,"Ingelheim, Germany",Health Care,Pharmaceuticals,www.boehringer-ingelheim.com
+492,Rabobank Group,Netherlands,"Utrecht, Netherlands",Financials,Banks: Commercial and Savings,www.rabobank.com
+493,CJ Corp.,South Korea,Seoul,Retailing,Specialty Retailers,www.cj.net
+494,Yangquan Coal Industry Group,China,"Yangquan, China",Energy,"Mining, Crude-Oil Production",www.ymjt.com.cn
+495,Shanxi LuAn Mining Group,China,"Changzhi, China",Energy,"Mining, Crude-Oil Production",www.chinaluan.com
+496,Henan Energy & Chemical,China,"Zhengzhou, China",Energy,"Mining, Crude-Oil Production",www.hnecgc.com.cn
+497,Datong Coal Mine Group,China,"Datong, China",Energy,"Mining, Crude-Oil Production",www.dtcoalmine.com
+498,BAE Systems,Britain,London,Aerospace & Defense,Aerospace & Defense,www.baesystems.com
+499,Qingdao Haier,China,"Qingdao, China",Technology,"Electronics, Electrical Equip.",www.haier.com/cn
+500,Ericsson,Sweden,Stockholm,Technology,Network and Other Communications Equipment,http://www.ericsson.com
