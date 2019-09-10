@@ -22,12 +22,26 @@ from nltk.tag      import pos_tag
 # nltk.download("stopwords")
 # nltk.download("averaged_perceptron_tagger")
 # nltk.download("wordnet")
+replacement_patterns = [
+    (r'won\'t', 'will not'),
+    (r'can\'t', 'cannot'),
+    (r'i\'m', 'i am'),
+    (r'ain\'t', 'is not'),
+    (r'(\w+)\'ll', '\g<1> will'),
+    (r'(\w+)n\'t', '\g<1> not'),
+    (r'(\w+)\'ve', '\g<1> have'),
+    (r'(\w+)\'s', '\g<1> is'),
+    (r'(\w+)\'re', '\g<1> are'),
+    (r'(\w+)\'d', '\g<1> would'),
+    (r'(\w+)’s', '\g<1>'),
+]
 
 class PreProcessing:
-    def __init__(self, mode='dictionary'):
+    def __init__(self, mode='dictionary', patterns=replacement_patterns):
         # Stopwords of English
         self.en_stopwords = stopwords.words("english")
         self.en_stopwords.remove("against")
+        self.pattern = patterns
         # User-defined stopwords
         # print(os.getcwd())
         my_stopwords = pd.read_csv("./classifier/packages/Data/Stopwords.csv", engine="python")["Stopwords"].tolist()
@@ -154,14 +168,52 @@ class PreProcessing:
         topic_df['Category'] = category
         return topic_df
 
-    def total_preprocess(self, text):
+    def total_preprocess(self, text, mode='article'):
         step1 = self.base_process(text)
         step2 = self.tokenize(step1)
         step3 = self.remv_en_stopwords(step2)
         step4 = self.remv_punc(step3)
         step5 = self.remv_white_space(step4)
         step6 = self.remv_total_stopwords(step5)
-        step7 = self.pos_tag(step6, mode='article')
+        if mode == 'article':
+            step7 = self.pos_tag(step6, mode='article')
+        else:
+            step7 = self.pos_tag(step6, mode=mode)
         step8 = self.remv_total_stopwords(step7)
         corpus_preprocess = self.remv_short_words(step8)
         return corpus_preprocess
+
+    def replace(self, text):
+        patterns = [(re.compile(regex), repl) for (regex, repl) in self.pattern]
+        s = text
+        for (pattern, repl) in patterns:
+            (s, count) = re.subn(pattern, repl, s)
+        return s
+
+    def corpus_preprocess(self, corpus):
+        n = WordNetLemmatizer()
+        corpus_preprocess= []
+        for sentence in corpus:
+            #print(i)
+            # Special Characters
+            try:
+                text = self.replace(str(sentence))
+            except KeyError:
+                print(sentence)
+            text = re.sub(r",", " ", text)
+            text = re.sub(r"\.", " ", text)
+            text = re.sub(r"!", " ", text)
+            text = re.sub(r"\(", " ( ", text)
+            text = re.sub(r"\)", " ) ", text)
+            text= re.sub(r"\?", " ", text)
+            text = re.sub("[^A-Za-z]"," ", text) # change "match all strings that contain a non-letter" as 1 white spaced
+            text = re.sub(r"\s{2,}", " ", text) # change 2 white spaces as 1 white space
+            word_tokens = word_tokenize(text.lower())
+            result = []
+            for w in word_tokens:
+                if w not in self.total_stopwords:
+                    result.append(w)
+            result = [n.lemmatize(w) for w in result]
+            # dd = " ".join(result)
+            corpus_preprocess.append(result)
+        return(corpus_preprocess)
