@@ -6,7 +6,9 @@ venv.bat
 .ipynb_checkpoints/
 *.ipynb
 classifier/models/
-classifier/results/
+classifier/results/article
+classifier/results/Dictionary/likelihood/
+classifier/results/LDA_html/
 source/
 article/
 article_score*

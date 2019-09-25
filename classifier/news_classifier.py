@@ -31,12 +31,12 @@ def parse_args():
     parser.add_argument('--model', help='choose w2v_model', default='Base', type=str)
     parser.add_argument('--train', help='train or not', default=False, type=bool)
     parser.add_argument('--date', help='analysis date', default='Today', type=str)
-    parser.add_argument('--rate', help='rate co-occurence score', default=0.5, type=float)
+    parser.add_argument('--rate', help='rate co-occurence score', default=1.0, type=float)
     args = parser.parse_args()
     return args
 
 class News_classifier:
-    def __init__(self, date='Today', train=False, model='Base', rate=0.5):
+    def __init__(self, date='Today', train=False, model='Base', rate=1.0):
         self.train = train
         self.rate = rate
         if date == 'Today':

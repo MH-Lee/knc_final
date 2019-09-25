@@ -21,7 +21,7 @@ class NewsURL:
         self.general_newsapi_3 = NewsApiClient(api_key=self.API_KEY4)
         self.google_newsapi = NewsApiClient(api_key=self.API_KEY5)
         # Make the magazine list
-        self.general_magazine1 = ["ABC News", "Associated Press", "Business Insider", "CBS News","CNN", "MSNBC"]
+        self.general_magazine1 = ["ABC News", "Associated Press", "Business Insider", "CBS News", "CNN"]
         self.general_magazine2 = ["Mashable", "NBC News", "The New York Times", "Reuters","The Economist"]
         self.general_magazine3 = ["The Washington Post", "The Washington Times", "Time", "USA Today"]
         self.tech_magazine = ["Ars Technica", "Engadget", "Hacker News", "TechCrunch", "TechRader", "The Next Web", "The Verge", "Wired"]
@@ -30,7 +30,7 @@ class NewsURL:
         self.end_date = datetime.datetime.strptime(end_date, "%Y-%m-%d")
         self.timedelta = int((self.end_date - self.start_date).days) + 1
         # company_list
-        self.cor_list = pd.read_csv('./Company.csv')['Name'].tolist()
+        self.cor_list = pd.read_csv('./company_data/Company.csv')['Name'].tolist()
         if os.path.exists('./source/') == False:
             os.mkdir('./source')
         if os.path.exists('./source/{}'.format(self.today.strftime("%Y-%m-%d"))) == False:

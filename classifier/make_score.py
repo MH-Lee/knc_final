@@ -142,7 +142,7 @@ class MakeScoreData:
         if method == 'lda':
             article_df['common_full_LDA'] = article_df['LDA_keywords'].apply(lambda x: list(set(x).intersection(self.total_topic_score.index.tolist())))
             article_df['keyword_score_LDA'] = article_df['common_full_LDA'].apply(lambda x: dict(self.total_topic_score.loc[x].sum().round(2)))
-            article_df['keyword_score_total_LDA'] = article_df['keyword_score_LDA'].apply(lambda x: round(sum(x.values()),2))
+            article_df['keyword_score_total_LDA'] = article_df['keyword_score_LDA'].apply(lambda x: round(max(x.values()),2))
             article_df['Total_score'] = article_df[['Company_score', 'coo_score', 'headline_score', 'Tech_score', 'keyword_score_total_LDA']].sum(axis=1)
         else:
             article_df['Total_score'] = article_df[['Company_score', 'coo_score', 'headline_score', 'Tech_score']].sum(axis=1)
