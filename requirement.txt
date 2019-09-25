@@ -15,7 +15,7 @@ feedfinder2==0.0.4
 feedparser==5.2.1
 funcy==1.13
 future==0.17.1
-gensim==3.8.0
+gensim==3.7.1
 idna==2.8
 importlib-metadata==0.19
 inflect==2.1.0
