@@ -3,7 +3,7 @@
 해당 프로젝트에서는 news api를 통해서 news url을 수집한뒤에 newspaper3k package에서 뉴스 전문을 크롤링하는 방식을 채택하고 있다.
 
 ### 1. news url crawler 사용법
-+ 필수 패키지 설치 사용 
++ 필수 패키지 설치 사용
 ```{python}
 pip install -r requirement.txt
 ```
@@ -91,7 +91,7 @@ python .\classifier\news_classifier.py --method auto --train True
 
 + 날짜를 지정해 새로 학습을 시킬 때
 + manual로 진행할 때는 날짜와 모델이름을 입력해주어야 한다.
-+ ./classifier/models에 word2vec models파일 3개가 있어야한다. 
++ ./classifier/models에 word2vec models파일 3개가 있어야한다.
 ```{python}
 python .\classifier\news_classifier.py --method manual --train True --date 2019-09-25 --model W2V_model_20190925
 ```
@@ -133,5 +133,5 @@ call .\batch\04.score_test.bat title 2019-09-25
 call .\batch\04.score_test.bat [method: manual or auto] [date: Today or YYYY-mm-dd] [model : model_name]
 ```
 ```{bash}
-call .\batch\04.score_test.bat title 2019-09-25 W2V_news_20190819
+call .\batch\04.score_test.bat title True 2019-09-25 W2V_news_20190819
 ```

@@ -18,10 +18,12 @@ from nltk.corpus   import stopwords, wordnet
 from nltk.stem     import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.tag      import pos_tag
-# Etc
+# 처음 실행할 때 주석을 제거하여 설치 해주어야함
 # nltk.download("stopwords")
 # nltk.download("averaged_perceptron_tagger")
 # nltk.download("wordnet")
+
+# 영어의 약어 표현을 바꾸어주는 정규 표현식
 replacement_patterns = [
     (r'won\'t', 'will not'),
     (r'can\'t', 'cannot'),
@@ -44,6 +46,7 @@ class PreProcessing:
         self.pattern = patterns
         # User-defined stopwords
         # print(os.getcwd())
+        # 미리 설정해둔 불용어 리스트를 로딩 상황에 맞게 단어를 추가해줄 수 있음
         my_stopwords = pd.read_csv("./classifier/packages/Data/Stopwords.csv", engine="python")["Stopwords"].tolist()
         company      = pd.read_csv("./classifier/packages/Data/Company.csv",   engine="python")["Company"].tolist()
         magazine     = pd.read_csv("./classifier/packages/Data/Magazine.csv",  engine="python")["Magazine"].tolist()
@@ -150,7 +153,7 @@ class PreProcessing:
             result.append(tmp)
         return result
 
-    # etc
+    # corpus convert to one sting data format(using LDA keywords extract)
     def merge_text_list(self, input_text):
         result = []
         for text in input_text:
@@ -158,6 +161,7 @@ class PreProcessing:
             result.append(tmp)
         return result
 
+    # make lda dataframe
     def display_topics(self, model, feature_names, no_top_words, category):
         topic_df = pd.DataFrame(columns=['Words', 'Category', 'Topic'])
         for topic_idx, topic in enumerate(model.components_):
@@ -168,6 +172,7 @@ class PreProcessing:
         topic_df['Category'] = category
         return topic_df
 
+    #  Integrate the whole preprocess
     def total_preprocess(self, text, mode='article'):
         step1 = self.base_process(text)
         step2 = self.tokenize(step1)
@@ -183,6 +188,7 @@ class PreProcessing:
         corpus_preprocess = self.remv_short_words(step8)
         return corpus_preprocess
 
+    # replace the contractions to the original form
     def replace(self, text):
         patterns = [(re.compile(regex), repl) for (regex, repl) in self.pattern]
         s = text
@@ -190,6 +196,7 @@ class PreProcessing:
             (s, count) = re.subn(pattern, repl, s)
         return s
 
+    # Pre-process for full text
     def corpus_preprocess(self, corpus):
         n = WordNetLemmatizer()
         corpus_preprocess= []

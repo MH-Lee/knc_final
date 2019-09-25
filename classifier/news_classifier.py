@@ -61,16 +61,19 @@ class News_classifier:
         corpus_vector = np.asarray(corpus_vector)
         return(corpus_vector)
 
+    # make title corpus vector
     def title_vector(self, title, model):
         title = pp.corpus_preprocess(title)
         title_vec = self.corpus_vector(title, model)
         return (title_vec)
 
+    # make text corpus vector
     def text_vector(self, text, model):
         text = pp.corpus_preprocess(text)
         text_vec = self.corpus_vector(text, model)
         return (text_vec)
 
+    # combine title and text corpus vector
     def title_corpus_vector(self, df, model, alpha = 0.3):
         title =  df.reset_index(drop = True)['Title']
         text = df.reset_index(drop = True)['Contents']
@@ -98,17 +101,20 @@ class News_classifier:
         dist_mat = np.asmatrix(dist_mat)
         return(dist_mat)
 
+    # word2vec 구축을 위한 title keyword와 text keywords merge
     def merge_list_by_col(self, row):
         # print(row['Title_keyword'])
         total_list = list(row['Title_keyword']) + list(row['Full_keyword'])
         return total_list
 
+    # 점수 산출이 완료된 Data에서 Cosine similarity를 이용해 중복기사를 제거
     def make_result(self):
         data = pd.read_excel("./classifier/data/{}/article_score_{}.xlsx".format(self.today1, self.rate))
         date = data.Date.astype('category').cat.categories.tolist()
         data.dropna(inplace=True)
         print("날짜: ", len(date), "데이터 차원: ", data.shape)
         data.reset_index(inplace=True, drop=True)
+        # 데이터 프레임에서 string 형태로 저장된 list와 dictionary를 다시 list와 dictionary로 변환
         data['Title_keyword'] = data['Title_keyword'].apply(lambda x: ast.literal_eval(x))
         data['Title_keyword_len'] = data['Title_keyword'].apply(lambda x: len(x))
         data = data[data['Title_keyword_len'] > 0]
@@ -120,6 +126,7 @@ class News_classifier:
             print(end_time1 - start_time1)
             print("start train!")
             start_time2 = time.time()
+            # word2vec models train & update
             model = gensim.models.Word2Vec.load('./classifier/models/{}'.format(self.model_name))
             model.build_vocab(newwiki, update=True)
             total_examples = model.corpus_count
@@ -142,6 +149,7 @@ class News_classifier:
         if os.path.exists('./classifier/results/article/{}/{}'.format(date[-1], self.rate)) == False:
             os.mkdir('./classifier/results/article/{}/{}'.format(date[-1], self.rate))
         # data = data[data.Total_score > 3.5]
+        # remove daily duplicate article
         make_data_start = True
         for day in date:
             data_day = data[data.Date == day]
@@ -153,7 +161,6 @@ class News_classifier:
             cosine_day = self.cosine_mat(news_cv)
             print(cosine_day)
             # cosin similarity 0.8이상의 index
-            # data.sort_values('Date', inplace=True)
             for i in data_day.index:
                 try:
                     data_day.drop(np.where(cosine_day[i] > 0.75)[1][1:], axis=0, inplace=True)

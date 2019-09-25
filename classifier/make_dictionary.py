@@ -27,6 +27,7 @@ def parse_args():
 
 class MakeKewordDict:
     def __init__(self, month=None, mode="title"):
+        # make resutls directory
         self.data = pd.read_excel("./classifier/data/important_article/category/knc_importance_{}.xlsx".format(month))
         if os.path.exists('./classifier/results/') == False:
             os.mkdir('./classifier/results/')
@@ -50,6 +51,7 @@ class MakeKewordDict:
                 os.mkdir('./classifier/results/LDA_html/{}'.format(month))
         print("start!")
 
+    # pre-process
     def title_keyword_preprocess_(self):
         title_data = self.data
         title = title_data["Title"].tolist()
@@ -75,19 +77,26 @@ class MakeKewordDict:
             tmp2 = " ".join(text)
             corpus.append(tmp2)
 
+        # make tf matrix
         corpus_tf = CountVectorizer().fit(corpus)
         count = corpus_tf.transform(corpus).toarray().sum(axis=0)
+        # sort index by word frequency
         idx = np.argsort(-count)
 
+        # tf matrix to list
         count = count[idx]
         feature_name = np.array(corpus_tf.get_feature_names())[idx]
         corpus_tf = list(zip(feature_name, count))
 
+        # make frequency dataframe
         for i in range(0, len(corpus_tf)):
             title_keyword = title_keyword.append({'Word':corpus_tf[i][0],\
                                                 'Frequency':corpus_tf[i][1]}, ignore_index=True)
         title_keyword.to_csv("./classifier/results/Dictionary/keyword_headline.csv", index=False, encoding="cp949")
 
+    ########################################################################################################
+    ### LDA로 뽑은 토픽에 Likelihood를 그려주는 함수
+    ########################################################################################################
     def make_liklihood_plot(self, result_df, cat, n_topics):
         # 0.01, 0.05, 0.1, 0.125, 0.25
         log_likelihood_1 = [round(result_df.loc[idx,'mean_test_score']) for idx in range(result_df.shape[0]) if (result_df.loc[idx,'params']['doc_topic_prior']==0.01) & (result_df.loc[idx,'params']['learning_decay']==0.5)]
@@ -96,7 +105,7 @@ class MakeKewordDict:
         log_likelihood_4 = [round(result_df.loc[idx,'mean_test_score']) for idx in range(result_df.shape[0]) if (result_df.loc[idx,'params']['doc_topic_prior']==0.125) & (result_df.loc[idx,'params']['learning_decay']==0.5)]
         log_likelihood_5 = [round(result_df.loc[idx,'mean_test_score']) for idx in range(result_df.shape[0]) if (result_df.loc[idx,'params']['doc_topic_prior']==0.25) & (result_df.loc[idx,'params']['learning_decay']==0.5)]
 
-        # Show graph
+        # Show likelihood graph
         plt.figure(figsize=(12, 8))
         plt.plot(n_topics, log_likelihood_1, label='0.01')
         plt.plot(n_topics, log_likelihood_2, label='0.05')
@@ -116,12 +125,14 @@ class MakeKewordDict:
         data['Category1'] = data['Category1'].astype('category')
         data['Category2'] = data['Category2'].astype('category')
         ####################################################################################################
-        ### Pre-processing
+        ### The process of extracting key words through LDA from articles categorized by category
+        ### category1 또는 2로 분류된 중요기사에서 상위 15개의 단어를 추출하는 작업
         ####################################################################################################
         category = data['Category1'].cat.categories.tolist()
         category = [cat.strip() for cat in category]
         category = list(set(category))
         print(category)
+        # gridserch할 토픽 갯수 리스트
         n_topics = [2, 3, 4]
         start_1 = time.time()
         make_data_first = True
@@ -143,7 +154,7 @@ class MakeKewordDict:
             try:
                 vectorizer = CountVectorizer(analyzer='word',
                                              min_df=10,                       # minimum reqd occurences of a word
-                                             stop_words='english',             # remove stop words                 # convert all words to lowercase
+                                             stop_words='english',             # remove stop words
                                              token_pattern='[a-zA-Z0-9]{1,}')  # num chars > 1
 
                 data_vectorized = vectorizer.fit_transform(corpus_join)
@@ -153,7 +164,7 @@ class MakeKewordDict:
                                                       random_state=777,          # Random state
                                                       evaluate_every = -1,       # compute perplexity every n iters, default: Don't
                                                       n_jobs = -1)               # Use all available CPUs
-
+                # 최적의 토픽 수를 찾기위한 GridSearch의 Parameters
                 search_params = {'n_components': n_topics, \
                                  'learning_decay': [.5, .7, .9],\
                                  'doc_topic_prior':[0.01, 0.05, 0.1, 0.125, 0.25]}
@@ -181,6 +192,7 @@ class MakeKewordDict:
                 continue
         end_1 = time.time()
         print(end_1 - start_1)
+        # keywords 사전에서 월마다 단어를 업데이트하는 과정
         if make_data_first:
             tmp_df['Month'] = month
             total_df = tmp_df
@@ -192,8 +204,10 @@ class MakeKewordDict:
     def make_keyword_score(self, method='title'):
         headline = pd.read_csv("./classifier/results/Dictionary/keyword_headline.csv", engine="python")
         total_keywords = pd.read_csv("./classifier/results/Dictionary/total_topics.csv", engine="python")
+        # Frequency가 1이상인 단어만 filter
         headline = headline[headline['Frequency'] > 1]
 
+        # headline score를 1~2사이로 normalize
         headline['Frequency'] = headline['Frequency'].apply(lambda x: round(((x-headline['Frequency'].min())/(headline['Frequency'].max()-headline['Frequency'].min()) + 0.5), 2))
         headline.to_csv("./classifier/results/Score/headline_score.csv", index=False)
 
@@ -201,6 +215,7 @@ class MakeKewordDict:
             total_keywords = total_keywords.groupby(['Words', 'Category'], as_index=False).count()
             total_keywords.sort_values(['Category','Topic'], ascending=[True, False], inplace=False)
             total_keywords.rename(columns ={'Topic':'Score'}, inplace=True)
+            # 두개의 토픽에 다 있으면 1점 한개에 토픽에 단어만 있으면 0.5점이므로 2로 나누어준다.
             total_keywords['Score'] = total_keywords['Score'] / 2
             total_keywords_score = total_keywords.pivot(index='Words', columns='Category', values='Score').reset_index().fillna(0)
             total_keywords_score.columns = ['Word', 'International', 'Regulation', 'Corporate', 'Law', 'Market', 'Tech']

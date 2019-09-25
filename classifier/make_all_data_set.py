@@ -13,12 +13,15 @@ def parse_args():
     args = parser.parse_args()
     return args
 
+# merge tech article and general article
 def make_file_list(method='auto'):
+    # auto는 당일 데이터만 merge
     if method == 'auto':
         list_dir1 = os.listdir('./article/')
         date = datetime.today().strftime("%Y-%m-%d")
         list_dir2 = os.listdir('./article/{}'.format(date))
         f_list = ['./article/{}/{}'.format(date, d) for d in list_dir2 if 'sheet' not in d]
+    # manual은 사용자 지정 기간 merge
     elif method == 'manual':
         f_list = list()
         list_dir1 = os.listdir('./article/')
@@ -78,6 +81,4 @@ if __name__ == '__main__':
         print("drop list zero!")
         pass
     print('데이터 차원 : {}'.format(df.shape))
-    # df = df[np.isfinite(df['Text'])]
-    # print('데이터 차원 : {}'.format(df.shape))
     df.to_excel('./classifier/data/{}/all_article_{}.xlsx'.format(date,date2), index=False)
