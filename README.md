@@ -1,6 +1,28 @@
-# news api & news crawler 사용법
+# K&C 산업뉴스 모니터링 명세서
 
-해당 프로젝트에서는 news api를 통해서 news url을 수집한뒤에 newspaper3k package에서 뉴스 전문을 크롤링하는 방식을 채택하고 있다.
+해당 프로젝트에서는 Prototype은 news api를 통해서 news url을 수집한뒤에 newspaper3k package에서 뉴스 전문을 크롤링하는 방식을 채택
+### 0. 디렉토리 구조
+#### a. source 
++ newsapi에서 크롤링한 뉴스 기사 (megazine, title, text, url)데이터 포함
++ 크롤링 일자별 폴더안에 Tech와 General, 기업별 sheet정리된 General news Data가 포함
+
+#### b. backup 
++ news-api는 사용량의 한정이 있고 인터넷 상황에 따라 끊길 수 있으므로 매체별 backup자료를 생성
+
+#### c. article
++ news-api url을 이용하여 newspaper3k로 뉴스 전문 크롤링 테스트한 데이터 포함
+
+#### d. crawler
++ craler code가 있음
+
+#### e. classifier 
+ - <p style="font-size:18px"><strong>중요뉴스를 산출하는 코드와 자료가 있음</strong></p>
+
+##### 1) data: merge 데이터와 score 데이터가 있음
+##### 2) models: word2vec model 저장
+##### 3) packages: stopwords와 전처리 코드 포함
+##### 4) result: LDA결과와, 사전데이터, 사전별 점수 사출 데이터 포함
+
 
 ### 1. news url crawler 사용법
 + 필수 패키지 설치 사용
@@ -95,6 +117,7 @@ python .\classifier\news_classifier.py --method auto --train True
 ```{python}
 python .\classifier\news_classifier.py --method manual --train True --date 2019-09-25 --model W2V_model_20190925
 ```
+
 
 ### 6. batch 파일
 
