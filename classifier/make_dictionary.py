@@ -26,8 +26,8 @@ def parse_args():
     return args
 
 class MakeKewordDict:
-    def __init__(self):
-        self.data = pd.read_excel("./classifier/data/important_article/knc_importance.xlsx")
+    def __init__(self, month=None, mode="title"):
+        self.data = pd.read_excel("./classifier/data/important_article/category/knc_importance_{}.xlsx".format(month))
         if os.path.exists('./classifier/results/') == False:
             os.mkdir('./classifier/results/')
         if os.path.exists('./classifier/results/Score') == False:
@@ -40,6 +40,14 @@ class MakeKewordDict:
             os.mkdir('./classifier/results/Dictionary/Topic_csv')
         if os.path.exists('./classifier/results/Dictionary/likelihood') == False:
             os.mkdir('./classifier/results/Dictionary/likelihood')
+        if mode=='lda':
+            self.month=month
+            if os.path.exists('./classifier/results/Dictionary/Topic_csv/{}'.format(month)) == False:
+                os.mkdir('./classifier/results/Dictionary/Topic_csv/{}'.format(month))
+            if os.path.exists('./classifier/results/Dictionary/likelihood/{}'.format(month)) == False:
+                os.mkdir('./classifier/results/Dictionary/likelihood/{}'.format(month))
+            if os.path.exists('./classifier/results/LDA_html/{}'.format(month)) == False:
+                os.mkdir('./classifier/results/LDA_html/{}'.format(month))
         print("start!")
 
     def title_keyword_preprocess_(self):
@@ -99,10 +107,9 @@ class MakeKewordDict:
         plt.xlabel("Num Topics")
         plt.ylabel("Log Likelyhood Scores")
         plt.legend(title='Alpha', loc='best')
-        plt.savefig('./classifier/results/Dictionary/likelihood/{}_best.jpg'.format(cat))
+        plt.savefig('./classifier/results/Dictionary/likelihood/{}/{}_best.jpg'.format(month, cat))
         plt.ioff()
         plt.close()
-
 
     def make_catagory_Dict(self):
         data =  self.data
@@ -117,7 +124,13 @@ class MakeKewordDict:
         print(category)
         n_topics = [2, 3, 4]
         start_1 = time.time()
-        total_df = pd.DataFrame(columns=['Words', 'Category', 'Topic'])
+        make_data_first = True
+        try:
+            total_df = pd.read_csv('./classifier/results/Dictionary/total_topics.csv', engine='python', encoding='cp949')
+            tmp_df = pd.DataFrame(columns=['Words', 'Category', 'Topic'])
+            make_data_first = False
+        except FileNotFoundError:
+            tmp_df = pd.DataFrame(columns=['Words', 'Category', 'Topic'])
         for cat in category:
             print(cat)
             df = data[(data['Category1'] == cat) | (data['Category2'] == cat)]
@@ -127,44 +140,53 @@ class MakeKewordDict:
             corpus = pp.total_preprocess(text)
             corpus_join = pp.merge_text_list(corpus)
 
-            vectorizer = CountVectorizer(analyzer='word',
-                                         min_df=10,                       # minimum reqd occurences of a word
-                                         stop_words='english',             # remove stop words                 # convert all words to lowercase
-                                         token_pattern='[a-zA-Z0-9]{1,}')  # num chars > 1
+            try:
+                vectorizer = CountVectorizer(analyzer='word',
+                                             min_df=10,                       # minimum reqd occurences of a word
+                                             stop_words='english',             # remove stop words                 # convert all words to lowercase
+                                             token_pattern='[a-zA-Z0-9]{1,}')  # num chars > 1
 
-            data_vectorized = vectorizer.fit_transform(corpus_join)
-            feature_names = vectorizer.get_feature_names()
-            # Build LDA Model
-            lda_model = LatentDirichletAllocation(learning_method='batch',
-                                                  random_state=777,          # Random state
-                                                  evaluate_every = -1,       # compute perplexity every n iters, default: Don't
-                                                  n_jobs = -1)               # Use all available CPUs
+                data_vectorized = vectorizer.fit_transform(corpus_join)
+                feature_names = vectorizer.get_feature_names()
+                # Build LDA Model
+                lda_model = LatentDirichletAllocation(learning_method='batch',
+                                                      random_state=777,          # Random state
+                                                      evaluate_every = -1,       # compute perplexity every n iters, default: Don't
+                                                      n_jobs = -1)               # Use all available CPUs
 
+                search_params = {'n_components': n_topics, \
+                                 'learning_decay': [.5, .7, .9],\
+                                 'doc_topic_prior':[0.01, 0.05, 0.1, 0.125, 0.25]}
 
-            search_params = {'n_components': n_topics, \
-                             'learning_decay': [.5, .7, .9],\
-                             'doc_topic_prior':[0.01, 0.05, 0.1, 0.125, 0.25]}
-            start = time.time()
-            model = GridSearchCV(lda_model, param_grid=search_params)
-            model.fit(data_vectorized)
-            end = time.time()
-            best_lda_model = model.best_estimator_
-            print("Best Model's Params:", model.best_params_)
-            print(end - start)
-            print("Model Perplexity:", best_lda_model.perplexity(data_vectorized))
-            print("Best Log Likelihood Score:", model.best_score_)
-            cat_data_file = cat.replace("/", "_")
+                start = time.time()
+                model = GridSearchCV(lda_model, param_grid=search_params)
+                model.fit(data_vectorized)
+                end = time.time()
+                best_lda_model = model.best_estimator_
+                print("Best Model's Params:", model.best_params_)
+                print(end - start)
+                print("Model Perplexity:", best_lda_model.perplexity(data_vectorized))
+                print("Best Log Likelihood Score:", model.best_score_)
+                cat_data_file = cat.replace("/", "_")
 
-            data_df = pp.display_topics(best_lda_model, feature_names, 15, cat)
-            data_df.to_csv('./classifier/results/Dictionary/Topic_csv/{}_topics.csv'.format(cat_data_file), index=False, encoding='cp949')
-            total_df = total_df.append(data_df)
-            panel = sklvis.prepare(best_lda_model, data_vectorized, vectorizer, mds='tsne')
-            pyLDAvis.save_html(panel, './classifier/results/LDA_html/lda_{}.html'.format(cat_data_file))
+                data_df = pp.display_topics(best_lda_model, feature_names, 15, cat)
+                data_df.to_csv('./classifier/results/Dictionary/Topic_csv/{}/{}_topics.csv'.format(month, cat_data_file), index=False, encoding='cp949')
+                tmp_df = tmp_df.append(data_df)
+                panel = sklvis.prepare(best_lda_model, data_vectorized, vectorizer, mds='tsne')
+                pyLDAvis.save_html(panel, './classifier/results/LDA_html/{}/lda_{}.html'.format(month, cat_data_file))
 
-            result_df = pd.DataFrame(model.cv_results_)
-            self.make_liklihood_plot(result_df=result_df, cat=cat_data_file, n_topics=n_topics)
+                result_df = pd.DataFrame(model.cv_results_)
+                self.make_liklihood_plot(result_df=result_df, cat=cat_data_file, n_topics=n_topics)
+            except ValueError:
+                continue
         end_1 = time.time()
         print(end_1 - start_1)
+        if make_data_first:
+            tmp_df['Month'] = month
+            total_df = tmp_df
+        else:
+            tmp_df['Month'] = month
+            total_df = total_df.append(tmp_df)
         total_df.to_csv('./classifier/results/Dictionary/total_topics.csv', index=False, encoding='cp949')
 
     def make_keyword_score(self, method='title'):
@@ -172,7 +194,7 @@ class MakeKewordDict:
         total_keywords = pd.read_csv("./classifier/results/Dictionary/total_topics.csv", engine="python")
         headline = headline[headline['Frequency'] > 1]
 
-        headline['Frequency'] = headline['Frequency'].apply(lambda x: round(((x-headline['Frequency'].min())/(headline['Frequency'].max()-headline['Frequency'].min()) + 1), 2))
+        headline['Frequency'] = headline['Frequency'].apply(lambda x: round(((x-headline['Frequency'].min())/(headline['Frequency'].max()-headline['Frequency'].min()) + 0.5), 2))
         headline.to_csv("./classifier/results/Score/headline_score.csv", index=False)
 
         if method == 'lda':
@@ -188,11 +210,13 @@ if __name__ == '__main__':
     args = parse_args()
     print('Called with args:')
     print(args)
-    md = MakeKewordDict()
     if args.method == 'title':
+        md = MakeKewordDict(mode="title")
         md.title_keword_extract()
         md.make_keyword_score()
     elif args.method == 'lda':
+        month = input("Topic keyword를 갱신하려는 달을 입력하세요 ex) 01 : ")
+        md = MakeKewordDict(month=month, mode="lda")
         md.title_keword_extract()
         md.make_catagory_Dict()
         md.make_keyword_score(method='lda')

@@ -21,7 +21,6 @@ import ast
 from packages.PreProcess import PreProcessing
 cores = multiprocessing.cpu_count()
 pp = PreProcessing(mode='score')
-
 ####################################################################################################
 ### make preprocess function
 ####################################################################################################
@@ -31,7 +30,7 @@ def parse_args():
     parser.add_argument('--method', help='select auto or manual', default='auto', type=str)
     parser.add_argument('--model', help='choose w2v_model', default='Base', type=str)
     parser.add_argument('--train', help='train or not', default=False, type=bool)
-    parser.add_argument('--date', help='rate co-occurence score', default='Today', type=str)
+    parser.add_argument('--date', help='analysis date', default='Today', type=str)
     parser.add_argument('--rate', help='rate co-occurence score', default=0.5, type=float)
     args = parser.parse_args()
     return args

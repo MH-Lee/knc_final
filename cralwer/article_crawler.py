@@ -68,6 +68,9 @@ def article_crawler(media_type='tech', date='today'):
             if 'best-deals-' in url:
                 print(url)
                 continue
+            if 'watch/' in url:
+                print(url)
+                continue
             a = Article(url, language='en')
             a.download()
             try:

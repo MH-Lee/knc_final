@@ -9,3 +9,4 @@ classifier/models/
 classifier/results/
 source/
 article/
+article_score*
