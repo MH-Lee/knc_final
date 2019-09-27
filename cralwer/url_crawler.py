@@ -128,7 +128,7 @@ class NewsURL:
         # newsapi.get_everything() parameters
         # q: Keywords or phrases to search for
         # sources: A comma-seperated string of identifiers (maximum 20) for the news
-        # from: A date and optional time for the oldest article allowed. default: the oldest according to your plan
+        # from_param: A date and optional time for the oldest article allowed. default: the oldest according to your plan
         # to: A date and optional time for the newest article allowed. default: the newest according to your plan
         # sort_by: The order to sort the articles in. Possible options: relevancy, popularity, publishedAt
         # page_size: The number of results to return per page. 20 is the default, 100 is the maxium
