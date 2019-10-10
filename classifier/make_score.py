@@ -107,7 +107,6 @@ class MakeScoreData:
 
     def generate_co_occurence(self, corpus):
         text_data = corpus.tolist()
-        varnames = tuple(sorted(set(itertools.chain(*text_data))))
         expanded = [tuple(itertools.combinations(d, 2)) for d in text_data]
         expanded = itertools.chain(*expanded)
         expanded = [tuple(sorted(d)) for d in expanded]

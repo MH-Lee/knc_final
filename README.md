@@ -82,6 +82,8 @@ python .\classifier\make_dictionary.py --method title
 ```{python}
 python .\classifier\make_dictionary.py --method lda
 ```
++ 한 달의 한 번 중요기사를 모아서 ./classifier/data/category/knc_importance_{month(mm)}.xlsx 파일을 만들어주면 된다.
++ 이 경우 갱신하려는 월을 ex) 08과 같이 입력해주면 된다.
 
 ### 4. 뉴스 중요 점수 산출기
 

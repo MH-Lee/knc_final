@@ -28,7 +28,10 @@ def parse_args():
 class MakeKewordDict:
     def __init__(self, month=None, mode="title"):
         # make resutls directory
-        self.data = pd.read_excel("./classifier/data/important_article/category/knc_importance_{}.xlsx".format(month))
+        if mode == 'title':
+            self.data = pd.read_excel("./classifier/data/important_article/knc_importance.xlsx")
+        else:
+            self.data = pd.read_excel("./classifier/data/important_article/category/knc_importance_{}.xlsx".format(month))
         if os.path.exists('./classifier/results/') == False:
             os.mkdir('./classifier/results/')
         if os.path.exists('./classifier/results/Score') == False:
