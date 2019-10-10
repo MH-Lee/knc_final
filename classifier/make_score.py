@@ -24,7 +24,7 @@ def parse_args():
     return args
 
 class MakeScoreData:
-    def __init__(self, date='Today', rate=0.5):
+    def __init__(self, date='Today', rate=0.5, method='title'):
         start_init_ = time.time()
         if date == 'Today':
             self.today1 = datetime.today().strftime("%Y-%m-%d")
@@ -32,6 +32,7 @@ class MakeScoreData:
         else:
             self.today1 = datetime.strptime(date, "%Y-%m-%d").date().strftime("%Y-%m-%d")
             self.today2 = datetime.strptime(date, "%Y-%m-%d").date().strftime("%Y%m%d")
+        self.method = method
         self.article_df = pd.read_excel('./classifier/data/{}/all_article_{}.xlsx'.format(self.today1, self.today2))
         self.headline_score = pd.read_csv('./classifier/results/Score/headline_score.csv', engine='python', index_col=0)
         self.total_topic_score = pd.read_csv('./classifier/results/Score/total_keywords_score.csv', engine='python', index_col=0)
@@ -54,11 +55,12 @@ class MakeScoreData:
         start_extract_ = time.time()
         self.article_df['Title'] = [pp_key.replace(title)for title in self.article_df['Title'].tolist()]
         self.article_df['Title_keyword'] = pp_key.total_preprocess(self.article_df['Title'], mode='title')
-        self.article_df['Full_keyword'] = pp_dict.total_preprocess(self.article_df['Contents'])
         self.article_df['Title_keyword_Freq'] = self.article_df['Title_keyword'].apply(lambda x:dict(FreqDist(x)))
-        self.article_df['Full_keyword_Freq'] = self.article_df['Full_keyword'].apply(lambda x:dict(FreqDist(x)))
         self.article_df['Title_keyword_unique'] = self.article_df['Title_keyword_Freq'].apply(lambda x:list(x.keys()))
-        self.article_df['Full_keyword_unique'] = self.article_df['Full_keyword_Freq'].apply(lambda x: list(x.keys()))
+        if self.method == 'lda':
+            self.article_df['Full_keyword'] = pp_dict.total_preprocess(self.article_df['Contents'])
+            self.article_df['Full_keyword_Freq'] = self.article_df['Full_keyword'].apply(lambda x:dict(FreqDist(x)))
+            self.article_df['Full_keyword_unique'] = self.article_df['Full_keyword_Freq'].apply(lambda x: list(x.keys()))
         end_extract_ = time.time()
         print(end_extract_ - start_extract_)
         return self.article_df
@@ -123,6 +125,8 @@ class MakeScoreData:
 
         # gernerate headline co-occurence dataframe
         co_dict = self.generate_co_occurence(article_df['common_headline'])
+        coo_df_dict = {'Coo_Word':list(co_dict.keys()), 'freq':list(co_dict.values())}
+        coo_df =  pd.DataFrame.from_dict(coo_df_dict)
         # belong to the list of k.c companies, give 1 points.
         article_df['Company_score'] = article_df['Company_list'].apply(lambda x:len(x))
         # belong to the list of Fortune 500 companies, give 0.5 points.
@@ -165,7 +169,7 @@ class MakeScoreData:
         article_df.sort_values('Total_score', ascending=False, inplace=True)
         article_df.drop_duplicates(['Url'], inplace=True)
         article_df.drop_duplicates(['Title'], inplace=True)
-        coo_df.to_excel("./classifier/data/{}/co_occurence.xlsx".format(self.today1), index=False)
+        coo_df.to_excel("./classifier/data/{}/co_occurence_{}.xlsx".format(self.today1, self.today2[4:6]), index=False)
         article_df.to_excel("./classifier/data/{}/article_score_{}.xlsx".format(self.today1, self.rate), index=False)
 
 if __name__ == '__main__':

@@ -17,18 +17,18 @@ def parse_args():
 def make_file_list(method='auto'):
     # auto는 당일 데이터만 merge
     if method == 'auto':
-        list_dir1 = os.listdir('./article/')
+        list_dir1 = os.listdir('./source/')
         date = datetime.today().strftime("%Y-%m-%d")
-        list_dir2 = os.listdir('./article/{}'.format(date))
-        f_list = ['./article/{}/{}'.format(date, d) for d in list_dir2 if 'sheet' not in d]
+        list_dir2 = os.listdir('./source/{}'.format(date))
+        f_list = ['./source/{}/{}'.format(date, d) for d in list_dir2 if 'sheet' not in d]
     # manual은 사용자 지정 기간 merge
     elif method == 'manual':
         f_list = list()
-        list_dir1 = os.listdir('./article/')
+        list_dir1 = os.listdir('./source/')
         print(list_dir1)
         date = input("위 리스트 중 합칠 날짜를 정해주세요(format:yyyy-mm-dd)")
-        list_dir2 = os.listdir('./article/{}'.format(date))
-        list_dir2 = ['./article/{}/{}'.format(date, d) for d in list_dir2 if 'sheet' not in d]
+        list_dir2 = os.listdir('./source/{}'.format(date))
+        list_dir2 = ['./source/{}/{}'.format(date, d) for d in list_dir2 if 'sheet' not in d]
         f_list.extend(list_dir2)
         continue_or_not = input("추가적으로 합칠 날짜가 있습니까(y/n)")
         print(f_list)
@@ -36,9 +36,9 @@ def make_file_list(method='auto'):
             while continue_or_not == 'y':
                 try:
                     date2 = input("합칠 날짜를 정해주세요(format:yyyy-mm-dd)")
-                    list_dir3 = os.listdir('./article/{}'.format(date2))
+                    list_dir3 = os.listdir('./source/{}'.format(date2))
                     print(list_dir3)
-                    list_dir3 = ['./article/{}/{}'.format(date2, d) for d in list_dir3 if 'sheet' not in d]
+                    list_dir3 = ['./source/{}/{}'.format(date2, d) for d in list_dir3 if 'sheet' not in d]
                     print(list_dir3)
                     f_list.extend(list_dir3)
                     continue_or_not = input("추가적으로 합칠 날짜가 있습니까(y/n)")
@@ -60,7 +60,6 @@ if __name__ == '__main__':
     elif args.method == 'manual':
         date_selector = input("Today or 날짜(YYYY-mm-dd)")
         file_list = make_file_list(method='manual')
-
     if date_selector == 'Today':
         date = datetime.today().strftime("%Y-%m-%d")
         date2 = datetime.today().strftime("%Y%m%d")
@@ -71,11 +70,14 @@ if __name__ == '__main__':
         os.mkdir('./classifier/data/')
     if os.path.exists('./classifier/data/{}'.format(date)) == False:
         os.mkdir('./classifier/data/{}'.format(date))
-
-    columns = ['Magazine', 'Date', 'Title', 'Text', 'Url']
+    columns = ['Magazine','Date','Author','Title','Url']
     df = pd.DataFrame(columns=columns)
     for file in file_list:
-        tmp = pd.read_excel(file)
+        print(file)
+        tmp = pd.read_csv(file)
+        if 'genurl' in file:
+            tmp.drop(['Company'], axis=1, inplace=True)
+        print(tmp.shape)
         df = df.append(tmp)
         df.dropna(inplace=True)
     try:
