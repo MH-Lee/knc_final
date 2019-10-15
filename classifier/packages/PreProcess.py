@@ -224,3 +224,29 @@ class PreProcessing:
             # dd = " ".join(result)
             corpus_preprocess.append(result)
         return(corpus_preprocess)
+
+    # Pre-process for full text
+    def text_preprocess(self, sentence):
+        n = WordNetLemmatizer()
+        #print(i)
+        # Special Characters
+        try:
+            text = self.replace(str(sentence))
+        except KeyError:
+            print(sentence)
+        text = re.sub(r",", " ", text)
+        text = re.sub(r"\.", " ", text)
+        text = re.sub(r"!", " ", text)
+        text = re.sub(r"\(", " ( ", text)
+        text = re.sub(r"\)", " ) ", text)
+        text= re.sub(r"\?", " ", text)
+        text = re.sub("[^A-Za-z]"," ", text) # change "match all strings that contain a non-letter" as 1 white spaced
+        text = re.sub(r"\s{2,}", " ", text) # change 2 white spaces as 1 white space
+        word_tokens = word_tokenize(text.lower())
+        result = []
+        for w in word_tokens:
+            if w not in self.total_stopwords:
+                result.append(w)
+        result = [n.lemmatize(w) for w in result]
+        # dd = " ".join(result)
+        return result

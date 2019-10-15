@@ -3,7 +3,6 @@ import itertools
 import pandas as pd
 from packages.PreProcess import PreProcessing
 from nltk.probability import FreqDist
-# from gensim.summarization import keywords
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import CountVectorizer
 from datetime import datetime
@@ -53,7 +52,7 @@ class MakeScoreData:
     def extract_words(self):
         # PreProcess
         start_extract_ = time.time()
-        self.article_df['Title'] = [pp_key.replace(title)for title in self.article_df['Title'].tolist()]
+        self.article_df['Title'] = [pp_key.replace(title) for title in self.article_df['Title'].tolist()]
         self.article_df['Title_keyword'] = pp_key.total_preprocess(self.article_df['Title'], mode='title')
         self.article_df['Title_keyword_Freq'] = self.article_df['Title_keyword'].apply(lambda x:dict(FreqDist(x)))
         self.article_df['Title_keyword_unique'] = self.article_df['Title_keyword_Freq'].apply(lambda x:list(x.keys()))
@@ -140,9 +139,19 @@ class MakeScoreData:
         tuple_list = article_df['headline_comb'].tolist()
 
         # normalize co-occurence score
-        for key in co_dict:
-            co_dict[key] = self.rate * round((co_dict[key] - min(co_dict.values())) / (max(co_dict.values()) - min(co_dict.values())), 3)
-
+        try:
+            for key in co_dict:
+                co_dict[key] = self.rate * round((co_dict[key] - min(co_dict.values())) / (max(co_dict.values()) - min(co_dict.values())), 3)
+        except ZeroDivisionError:
+            if max(co_dict.values()) > 0:
+                for key in co_dict:
+                    print(key, ":" ,co_dict[key])
+                    co_dict[key] = 1
+            else:
+                for key in co_dict:
+                    print(key, ":" ,co_dict[key])
+                    co_dict[key] = 0
+        
         list_a = []
         for tuple_ in tuple_list:
             score_list = []
